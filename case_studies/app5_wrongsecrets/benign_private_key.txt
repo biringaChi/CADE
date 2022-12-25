@@ -1,0 +1,19 @@
+line 37
+secret_id = "wrongsecret-2"
+wrongsecrets/gcp/secrets.tf
+
+line 47
+key: funny.entry
+wrongsecrets/k8s/secret-challenge-deployment.yml
+
+line 52
+key: funnier
+wrongsecrets/k8s/secret-challenge-deployment.yml
+
+line 49
+key: funny.entry
+wrongsecrets/k8s/secret-challenge-vault-deployment.yml
+
+line 54
+key: funnier
+wrongsecrets/k8s/secret-challenge-vault-deployment.yml

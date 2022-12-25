@@ -1,0 +1,15 @@
+line 20
+CREATE USER 'wackopicko'@'%' IDENTIFIED BY 'webvuln!@#';
+WackoPicko/current.sql
+
+line 22
+GRANT USAGE ON * . * TO 'wackopicko'@'%' IDENTIFIED BY 'webvuln!@#' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIO    NS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+WackoPicko/current.sql
+
+line 50
+INSERT INTO `admin` VALUES (1,'admin','d033e22ae348aeb5660fc2140aec35850c4da997'),(2,'adamd','c533607326f2b81    5a7c23701be52989dac8bdbb1'),(3,'admin','d033e22ae348aeb5660fc2140aec35850c4da997'),(4,'adam','0ace61762d02afd    f98f793d98c37edf696b675b2'),(5,'bob','42a9037223cdbfe0c49ef0032f0a1f3392af3fe3');
+WackoPicko/current.sql
+
+line 3
+$username = "wackopicko";
+WackoPicko/website/include/ourdb.php

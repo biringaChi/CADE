@@ -1,0 +1,314 @@
+line 12
+RUN sed -i "s/default_mcir_db_password/mcirpass00112233/" sqlol/includes/database.config.php
+MCIR/Dockerfile
+
+line 13
+RUN sed -i "s/default_mcir_db_password/mcirpass00112233/" cryptomg/includes/db.inc.php
+MCIR/Dockerfile
+
+line 24
+$admin_password = encode(encrypt("Cru@UJUbet69YePejEwr", $cipher, $mode, $key, $iv), 4);
+MCIR/cryptomg/ctf/challenge2/db.php
+
+line 25
+$guest_password = encode(encrypt("guest", $cipher, $mode, $key, $iv), 4);
+MCIR/cryptomg/ctf/challenge2/db.php
+
+line 27,30
+$create_table_users = "CREATE TABLE IF NOT EXISTS challenge2_users (
+                        id INT NOT NULL PRIMARY KEY,
+                        username VARCHAR(32),
+                        password VARCHAR(64));";
+MCIR/cryptomg/ctf/challenge2/db.php
+
+
+line 23
+$key = "PreDE9eTRuEdraZ8";
+MCIR/cryptomg/ctf/challenge3/index.php
+
+line 24 
+$key_hash = "57f3450d18e982b8f3d4e9beb8ca290d";
+MCIR/cryptomg/ctf/challenge3/index.php
+
+line 23,27
+$sql_create_table =  "CREATE TABLE IF NOT EXISTS challenge4_users (
+                                        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                                        username VARCHAR(32),
+                                        password VARCHAR(32),
+                                        email VARCHAR(64))";
+MCIR/cryptomg/ctf/challenge4/db.php
+
+line 30,33
+$sql_insert_data = "INSERT INTO challenge4_users (id, username, password, email)
+                                                                                VALUES(1, 'admin', '".
+                                                                                md5("@4rfhaOsd(#d4l;hp)")."', 
+                                                                                'admin@example.org')";
+MCIR/cryptomg/ctf/challenge4/db.php
+
+line 22
+$db_user = "root";
+MCIR/cryptomg/includes/db.inc.php
+
+line 23
+$db_pass = "default_mcir_db_password";
+MCIR/cryptomg/includes/db.inc.php
+
+line 4
+MYSQL_ROOT_PASSWORD=mcirpass00112233
+MCIR/docker-compose.yml
+
+line 12
+$dsn = "mysql://myuser:mypass@localhost/authdb";
+MCIR/sqlol/includes/adodb/pear/readme.Auth.txt
+
+line 38
+$uid = 'root';
+sqlol/includes/adodb/server.php
+
+line 39
+$pwd = 'garbase-it-is';
+sqlol/includes/adodb/server.php
+
+line 168
+static $_user = 'root'
+MCIR/sqlol/includes/adodb/session/adodb-session.php
+
+line 187
+static $_password = '';
+MCIR/sqlol/includes/adodb/session/adodb-session.php
+
+line 411
+static $_encryption_key = 'CRYPTED ADODB SESSIONS ROCK!';
+MCIR/sqlol/includes/adodb/session/adodb-session.php
+
+line 200
+static $_user = 'root';
+MCIR/sqlol/includes/adodb/session/adodb-session2.php
+
+line 220
+static $_password = '';
+MCIR/sqlol/includes/adodb/session/adodb-session2.php
+
+line 433
+static $_encryption_key = 'CRYPTED ADODB SESSIONS ROCK!';
+MCIR/sqlol/includes/adodb/session/adodb-session2.php
+
+line 47
+$randomPassword = "";
+MCIR/sqlol/includes/adodb/session/crypt.inc.php
+
+line 135
+$randomPassword = "";
+MCIR/sqlol/includes/adodb/session/crypt.inc.php
+
+line 52
+$ADODB_SESSION_USER ='user';
+MCIR/sqlol/includes/adodb/session/old/adodb-cryptsession.php
+
+line 53
+$ADODB_SESSION_PWD ='password';
+MCIR/sqlol/includes/adodb/session/old/adodb-cryptsession.php
+
+line 94
+$ADODB_SESSION_USER ='root';
+MCIR/sqlol/includes/adodb/session/old/adodb-cryptsession.php
+
+line 95
+$ADODB_SESSION_PWD ='';
+MCIR/sqlol/includes/adodb/session/old/adodb-cryptsession.php
+
+line 56
+$ADODB_SESSION_USER ='user';
+MCIR/sqlol/includes/adodb/session/old/adodb-session-clob.php
+
+line 57
+$ADODB_SESSION_PWD ='password';
+MCIR/sqlol/includes/adodb/session/old/adodb-session-clob.php
+
+line 136
+$ADODB_SESSION_USER ='root';
+MCIR/sqlol/includes/adodb/session/old/adodb-session-clob.php
+
+line 137
+$ADODB_SESSION_PWD ='';
+MCIR/sqlol/includes/adodb/session/old/adodb-session-clob.php
+
+line 67
+$ADODB_SESSION_USER ='user';
+MCIR/sqlol/includes/adodb/session/old/adodb-session.php
+
+line 68
+$ADODB_SESSION_PWD ='password';
+MCIR/sqlol/includes/adodb/session/old/adodb-session.php
+
+line 175
+$ADODB_SESSION_USER ='root';
+MCIR/sqlol/includes/adodb/session/old/adodb-session.php
+
+line 176
+$ADODB_SESSION_PWD ='';
+MCIR/sqlol/includes/adodb/session/old/adodb-session.php
+
+line 213
+$ADODB_SESSION_USER,
+MCIR/sqlol/includes/adodb/session/old/adodb-session.php
+
+line 214
+$ADODB_SESSION_PWD,
+MCIR/sqlol/includes/adodb/session/old/adodb-session.php
+
+line 42
+$conn->PConnect("localhost", "root", "", "test");
+MCIR/sqlol/includes/adodb/tests/test4.php
+
+line 24
+$db->PConnect('mangrove','root','','xphplens');
+MCIR/sqlol/includes/adodb/tests/testcache.php
+
+line 87
+$pg_user = 'tester';
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 88
+$pg_password = 'test';
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 280
+$user = 'root'; $password = '';
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 87
+$pg_user = 'tester';
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 88
+$pg_password = 'test';
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 280
+$user = 'root'; $password = ''; 
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 299
+if ($db->PConnect($server, "root", "", "northwind")) {
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 315
+if ($db->PConnect('mysql', "root", ""))
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 353
+if ($db->PConnect("", "scott", "tiger", "natsoft.domain"))
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 367
+if ($db->Connect('localhost','natsoft','guest','test')) {
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 49
+$db->PConnect('','scott','natsoft');
+MCIR/sqlol/includes/adodb/tests/testoci8.php
+
+line 65
+$db->PConnect('','scott','natsoft');
+MCIR/sqlol/includes/adodb/tests/testoci8cursor.php
+
+line 17
+$username = 'root';
+
+
+line 18
+$password = '';
+MCIR/sqlol/includes/adodb/tests/testpear.php
+
+line 47
+ADOdb_Session::config('mysql', 'localhost', 'root', '', 'xphplens_2',$options);
+MCIR/sqlol/includes/adodb/tests/testsessions.php
+
+line 28
+$username = 'adodb';
+MCIR/sqlol/includes/adodb/tests/tmssql.php
+
+line 29
+$password = 'natsoft';
+MCIR/sqlol/includes/adodb/tests/tmssql.php
+
+line 48
+$conn->Connect('JAGUAR\vsdotnet','adodb','natsoft','northwind');
+MCIR/sqlol/includes/adodb/tests/tmssql.php
+
+line 5
+$db->connect('localhost', 'root', 'C0yote71', 'mantis_13x');
+MCIR/sqlol/includes/adodb/x.php
+
+line 22
+$username = 'root';
+MCIR/sqlol/includes/database.config.php
+
+line 23
+$password = 'default_mcir_db_password';
+MCIR/sqlol/includes/database.config.php
+
+line 34
+$username = 'postgres';
+MCIR/sqlol/includes/database.config.php
+
+line 35
+$password = 'postgres';
+MCIR/sqlol/includes/database.config.php
+
+line 17
+<username>jsmiley</username>
+MCIR/xmlmao/data.xml
+
+line 18
+<password>jsmiley</password>
+MCIR/xmlmao/data.xml
+
+line 24
+<username>cmacrunfast</username>
+MCIR/xmlmao/data.xml
+
+line 25
+<password>speedsupto3</password>
+MCIR/xmlmao/data.xml
+
+line 31
+<username>mitch</username>
+MCIR/xmlmao/data.xml
+
+line 32
+<password>@lltogether</password>
+MCIR/xmlmao/data.xml
+
+line 38
+<username>jsmiley</username>
+MCIR/xmlmao/data.xml
+
+line 42
+<username>cmacrunfast</username>
+MCIR/xmlmao/data.xml
+
+line 46
+<username>mitch</username>
+MCIR/xmlmao/data.xml
+
+line 366
+#$dsn = \"driver={IBM db2 odbc DRIVER};Database=test;hostname=localhost;port=50000;protocol=TCPIP; uid=natsoft; pwd=guest";
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 367
+#$dsn = \"driver={IBM db2 odbc DRIVER};Database=test;hostname=localhost;port=50000;protocol=TCPIP; uid=natsoft; pwd=guest;
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 383
+$dsn = \"driver={IBM db2 odbc DRIVER};Database=sample;hostname=localhost;port=50000;protocol=TCPIP; uid=root; pwd=natsoft;
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 467
+$dsn = \"PROVIDER=MSDASQL;Driver={SQL Server};Server=$server;Database=northwind;uid=adodb;pwd=natsoft;
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 27
+$secret = 'ThisisMYl0ng4ndh5rd2gues%sSekrett!';
+MCIR/cryptomg/ctf/challenge5/index.ph

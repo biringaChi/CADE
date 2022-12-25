@@ -1,0 +1,27 @@
+line 23
+$key = "PreDE9eTRuEdraZ8";
+CryptOMG/ctf/challenge3/index.php
+
+line 24
+$key_hash = "57f3450d18e982b8f3d4e9beb8ca290d";
+CryptOMG/ctf/challenge3/index.php
+
+line 37
+$key_hash = ""; 
+CryptOMG/ctf/challenge3/index.php
+
+line 23
+$key = "PreDE9eTRuEdraZ8";
+MCIR/cryptomg/ctf/challenge3/index.php
+
+line 24
+$key_hash = "57f3450d18e982b8f3d4e9beb8ca290d";
+MCIR/cryptomg/ctf/challenge3/index.php
+
+line 411
+static $_encryption_key = 'CRYPTED ADODB SESSIONS ROCK!';
+MCIR/sqlol/includes/adodb/session/adodb-session.php
+
+line 433
+static $_encryption_key = 'CRYPTED ADODB SESSIONS ROCK!';
+MCIR/sqlol/includes/adodb/session/adodb-session2.php

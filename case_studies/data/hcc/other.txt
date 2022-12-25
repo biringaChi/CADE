@@ -1,0 +1,186 @@
+line 30,33
+$sql_insert_data = "INSERT INTO challenge4_users (id, username, password, email)
+                                                                                VALUES(1, 'admin', '".                                                                                md5("@4rfhaOsd(#d4l;hp)")."',                                                                             
+                                                                                'admin@example.org')";
+CryptOMG/ctf/challenge4/db.php 
+
+line 22
+$db_user = "";
+CryptOMG/includes/db.inc.php
+
+line 30,33
+$sql_insert_data = "INSERT INTO challenge4_users (id, username, password, email)
+                                                                                VALUES(1, 'admin', '".                                                                                md5("@4rfhaOsd(#d4l;hp)")."',                                                                             
+                                                                                'admin@example.org')";
+MCIR/cryptomg/ctf/challenge4/db.php                                                 
+
+line 22
+$db_user = "root";
+MCIR/cryptomg/includes/db.inc.php
+
+line 12
+$dsn = "mysql://myuser:mypass@localhost/authdb";
+MCIR/sqlol/includes/adodb/pear/readme.Auth.txt
+
+line 38
+$uid = 'root';
+sqlol/includes/adodb/server.php
+
+line 168
+static $_user = 'root'
+MCIR/sqlol/includes/adodb/session/adodb-session.php
+
+line 200
+static $_user = 'root';
+MCIR/sqlol/includes/adodb/session/adodb-session2.php
+
+line 52
+$ADODB_SESSION_USER ='user';
+MCIR/sqlol/includes/adodb/session/old/adodb-cryptsession.php
+
+line 94
+$ADODB_SESSION_USER ='root';
+MCIR/sqlol/includes/adodb/session/old/adodb-cryptsession.php
+
+line 56
+$ADODB_SESSION_USER ='user';
+MCIR/sqlol/includes/adodb/session/old/adodb-session-clob.php
+
+line 136
+$ADODB_SESSION_USER ='root';
+MCIR/sqlol/includes/adodb/session/old/adodb-session-clob.php
+
+line 67
+$ADODB_SESSION_USER ='user';
+MCIR/sqlol/includes/adodb/session/old/adodb-session.php
+
+line 175
+$ADODB_SESSION_USER ='root';
+MCIR/sqlol/includes/adodb/session/old/adodb-session.php
+
+line 213
+$ADODB_SESSION_USER,
+MCIR/sqlol/includes/adodb/session/old/adodb-session.php
+
+line 42
+$conn->PConnect("localhost", "root", "", "test");
+MCIR/sqlol/includes/adodb/tests/test4.php
+
+line 24
+$db->PConnect('mangrove','root','','xphplens');
+MCIR/sqlol/includes/adodb/tests/testcache.php
+
+line 87
+$pg_user = 'tester';
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 87
+$pg_user = 'tester';
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 299
+if ($db->PConnect($server, "root", "", "northwind")) {
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 315
+if ($db->PConnect('mysql', "root", ""))
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 353
+if ($db->PConnect("", "scott", "tiger", "natsoft.domain"))
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 367
+if ($db->Connect('localhost','natsoft','guest','test')) {
+MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php
+
+line 49
+$db->PConnect('','scott','natsoft');
+MCIR/sqlol/includes/adodb/tests/testoci8.php
+
+line 65
+$db->PConnect('','scott','natsoft');
+MCIR/sqlol/includes/adodb/tests/testoci8cursor.php
+
+line 17
+$username = 'root';
+
+line 47
+ADOdb_Session::config('mysql', 'localhost', 'root', '', 'xphplens_2',$options);
+MCIR/sqlol/includes/adodb/tests/testsessions.php
+
+line 28
+$username = 'adodb';
+MCIR/sqlol/includes/adodb/tests/tmssql.php
+
+line 48
+$conn->Connect('JAGUAR\vsdotnet','adodb','natsoft','northwind');
+MCIR/sqlol/includes/adodb/tests/tmssql.php
+
+line 5
+$db->connect('localhost', 'root', 'C0yote71', 'mantis_13x');
+MCIR/sqlol/includes/adodb/x.php
+
+line 22
+$username = 'root';
+MCIR/sqlol/includes/database.config.php
+
+line 34
+$username = 'postgres';
+MCIR/sqlol/includes/database.config.php
+
+line 17
+<username>jsmiley</username>
+MCIR/xmlmao/data.xml
+
+line 24
+<username>cmacrunfast</username>
+MCIR/xmlmao/data.xml
+
+line 31
+<username>mitch</username>
+MCIR/xmlmao/data.xml
+
+line 38
+<username>jsmiley</username>
+MCIR/xmlmao/data.xml
+
+line 42
+<username>cmacrunfast</username>
+MCIR/xmlmao/data.xml
+
+line 46
+<username>mitch</username>
+MCIR/xmlmao/data.xml
+
+line 20
+CREATE USER 'wackopicko'@'%' IDENTIFIED BY 'webvuln!@#';
+WackoPicko/current.sql
+
+line 22
+GRANT USAGE ON * . * TO 'wackopicko'@'%' IDENTIFIED BY 'webvuln!@#' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIO    NS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+WackoPicko/current.sql
+
+line 50
+INSERT INTO `admin` VALUES (1,'admin','d033e22ae348aeb5660fc2140aec35850c4da997'),(2,'adamd','c533607326f2b81    5a7c23701be52989dac8bdbb1'),(3,'admin','d033e22ae348aeb5660fc2140aec35850c4da997'),(4,'adam','0ace61762d02afd    f98f793d98c37edf696b675b2'),(5,'bob','42a9037223cdbfe0c49ef0032f0a1f3392af3fe3');
+WackoPicko/current.sql
+
+line 3
+$username = "wackopicko";
+WackoPicko/website/include/ourdb.php
+
+line 26
+'name': 'Admin',
+gruyere-code/data.py
+
+line 34
+'name': 'Cheddar Mac',
+gruyere-code/data.py
+
+line 48
+'name': 'Miss Sardo',
+gruyere-code/data.py
+
+line 58
+'name': 'Brie',
+gruyere-code/data.py

@@ -1,0 +1,47 @@
+line 7
+$admin = Admins::current_admin();
+WackoPicko/website/admin/index.php
+
+line 12
+$user = Users::current_user();
+WackoPicko/website/cart/action.php
+
+line 65
+$id = mysql_insert_id();
+WackoPicko/website/include/admins.php
+
+line 12
+$name = $_POST['name'];
+WackoPicko/website/piccheck.php
+
+line 11
+$user = Users::current_user();
+WackoPicko/website/pictures/conflict.php
+
+line 17
+$user = Users::current_user();
+WackoPicko/website/pictures/conflictview.php
+
+line 17
+$user = Users::current_user();
+WackoPicko/website/pictures/high_quality.php
+
+line 11
+$user = Users::current_user();
+WackoPicko/website/pictures/purchased.php
+
+line 11
+$user = Users::current_user();
+WackoPicko/website/pictures/upload.php
+
+line 40
+<tr><td>Username :</td><td> <input type="text" name="username" /></td></tr>
+WackoPicko/website/users/login.php
+
+line 10
+$user = Users::current_user();
+WackoPicko/website/users/similar.php
+
+line 24
+$user = Users::get_user($_GET['userid']);
+WackoPicko/website/users/view.php

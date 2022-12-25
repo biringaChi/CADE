@@ -1,0 +1,11 @@
+line 19
+manage_url:http://canarytokens.org/manage?token=y0all60b627gzp19ahqh7rl6j&auth=09193ea6b8def3e27a1a41f98d4265d7,
+wrongsecrets/src/main/java/org/owasp/wrongsecrets/canaries/AdditionalCanaryData.java
+
+line 20
+manage_url:http://canarytokens.org/manage?token=y0all60b627gzp19ahqh7rl6j&auth=09193ea6b8def3e27a1a41f98d4265d7,
+wrongsecrets/src/main/java/org/owasp/wrongsecrets/canaries/CanaryToken.java
+
+line 14
+AWS_WEB_IDENTITY_TOKEN_FILE=if_you_see_this_please_use_AWS_Setup
+wrongsecrets/src/main/resources/application.properties

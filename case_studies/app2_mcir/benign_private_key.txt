@@ -1,0 +1,35 @@
+line 44
+$key_hash .= $hash;
+MCIR/cryptomg/ctf/challenge3/index.php
+
+line 414
+$_encryption_key = $encryption_key;
+MCIR/sqlol/includes/adodb/session/adodb-session.php
+
+line 436
+$_encryption_key = $encryption_key;
+MCIR/sqlol/includes/adodb/session/adodb-session2.php
+
+line 6
+$encrypt_key = md5($encrypt_key);
+MCIR/sqlol/includes/adodb/session/crypt.inc.php
+
+line 20
+$encrypt_key = md5(rand(0,32000));
+MCIR/sqlol/includes/adodb/session/crypt.inc.php
+
+line 70
+$encrypt_key = sha1($encrypt_key);
+MCIR/sqlol/includes/adodb/session/crypt.inc.php
+
+line 87
+$encrypt_key = sha1(rand(0,32000));
+MCIR/sqlol/includes/adodb/session/crypt.inc.php
+
+line 222
+$key = $rs->fields[1];
+MCIR/sqlol/includes/adodb/session/old/adodb-cryptsession.php
+
+line 361
+$key = $rs->fields[1];
+MCIR/sqlol/includes/adodb/session/old/adodb-session.php

@@ -1,0 +1,7 @@
+line 26
+$p_key = @$_POST['password'];
+CryptOMG/ctf/challenge3/index.php
+
+line 44
+$key_hash .= $hash;
+CryptOMG/ctf/challenge3/index.php

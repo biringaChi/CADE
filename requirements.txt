@@ -1,0 +1,5 @@
+numpy
+pandas
+transformers
+torch>=1.12.0
+simpletransformers

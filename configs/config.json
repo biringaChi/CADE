@@ -1,0 +1,56 @@
+{
+	"metacols" : {
+		"fp" : "FilePath",
+		"lsle" : "LineStart:LineEnd",
+		"gt" : "GroundTruth",
+		"sn" : "secret.txt",
+		"bn" : "benign.txt",
+		"obslen" : 5000
+	},
+	"groundtruth" : {
+		"negative" : "F",
+		"positive" : "T",
+		"partial_positive" : "Template"
+	},
+	"bert" : {
+		"model_type" : "bert",
+		"model_name" : "bert-base-uncased",
+		"combine_strategy" :  "mean"
+	},
+
+	"meval": {
+		"beta" : 0.5,
+		"f1_score" : "f1", 
+		"precision" : "precision"
+	},
+	"clf_params" : {
+		"max_iter" : 20000,
+		"solver" : "lbfgs",
+		"mlalgo" : "mlalgo",
+		"dlalgo" : "dlalgo",
+		"batch_size" : 32,
+		"pos_lab" : 1, 
+		"neg_lab" : 0,
+		"random_state" : 4,
+		"test_size" : 0.2,
+		"sample" : 5
+	},
+
+	"cnn_params" : {
+		"in_channels" : 1,
+		"out_channels" : 1,
+		"in_features" : 10,  
+		"out_features" : 300,
+		"dropout" : 0.25,
+		"kernel" : 3, 
+		"stride" : 1, 
+		"padding" : 1,
+		"pool" : 10, 
+		"label" : 1
+	},
+	"cnn_train" : {
+		"epochs" : 5, 
+		"learning_rate" : 0.001,
+		"betas" : [0.5, 0.999]
+	}
+}

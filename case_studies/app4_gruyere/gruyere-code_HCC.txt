@@ -1,0 +1,31 @@
+line 26
+'name': 'Admin',
+gruyere-code/data.py
+
+line 27
+'pw': 'secret',
+gruyere-code/data.py
+
+line 34
+'name': 'Cheddar Mac',
+gruyere-code/data.py
+
+line 35
+'pw': 'orange',
+gruyere-code/data.py
+
+line 48
+'name': 'Miss Sardo',
+gruyere-code/data.py
+
+line 49
+'pw': 'odras',
+gruyere-code/data.py
+
+line 58
+'name': 'Brie',
+gruyere-code/data.py
+
+line 59
+'pw': 'briebrie',
+gruyere-code/data.py

@@ -1,0 +1,38 @@
+line 24
+$admin_password = encode(encrypt("Cru@UJUbet69YePejEwr", $cipher, $mode, $key, $iv), 4);
+CryptOMG/ctf/challenge2/db.php
+
+line 25
+$guest_password = encode(encrypt("guest", $cipher, $mode, $key, $iv), 4);
+CryptOMG/ctf/challenge2/db.php
+
+line 23
+$key = "PreDE9eTRuEdraZ8";
+CryptOMG/ctf/challenge3/index.php
+
+line 24
+$key_hash = "57f3450d18e982b8f3d4e9beb8ca290d";
+CryptOMG/ctf/challenge3/index.php
+
+line 37
+$key_hash = "";
+CryptOMG/ctf/challenge3/index.php
+
+line 30,33
+$sql_insert_data = "INSERT INTO challenge4_users (id, username, password, email)
+                                                                                VALUES(1, 'admin', '".
+                                                                                md5("@4rfhaOsd(#d4l;hp)")."', 
+                                                                                'admin@example.org')";
+CryptOMG/ctf/challenge4/db.php
+
+line 22
+$db_user = "";
+CryptOMG/includes/db.inc.php
+
+line 23
+$db_pass = "";
+CryptOMG/includes/db.inc.php
+
+line 27
+$secret = 'ThisisMYl0ng4ndh5rd2gues%sSekrett!';
+vim CryptOMG/ctf/challenge5/index.php

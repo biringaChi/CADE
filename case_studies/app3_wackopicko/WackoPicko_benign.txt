@@ -1,0 +1,83 @@
+line 17
+mysql -uroot -e "CREATE USER 'admin'@'%' IDENTIFIED BY '$PASS'"
+WackoPicko/create_mysql_admin_user.sh
+
+line 7
+$admin = Admins::current_admin();
+WackoPicko/website/admin/index.php
+
+line 7
+$bad_login = !(isset($_POST['adminname']) && isset($_POST['password']));
+WackoPicko/website/admin/login.php
+
+line 12
+$user = Users::current_user();
+WackoPicko/website/cart/action.php
+
+line 65
+$id = mysql_insert_id();
+WackoPicko/website/include/admins.php
+
+line 37
+$pass = mysql_real_escape_string($pass);
+WackoPicko/website/include/users.php
+
+line 39
+$pass = $pass . $salt;
+WackoPicko/website/include/users.php
+
+line 9
+$pass = $_POST['password'];
+WackoPicko/website/passcheck.php
+
+line 12
+$name = $_POST['name'];
+WackoPicko/website/piccheck.php
+
+line 11
+$user = Users::current_user();
+WackoPicko/website/pictures/conflict.php
+
+line 17
+$user = Users::current_user();
+WackoPicko/website/pictures/conflictview.php
+
+line 17
+$user = Users::current_user();
+WackoPicko/website/pictures/high_quality.php
+
+line 11
+$user = Users::current_user();
+WackoPicko/website/pictures/purchased.php
+
+line 11
+$user = Users::current_user();
+WackoPicko/website/pictures/upload.php
+
+line 8
+$pass = $_GET["password"];
+WackoPicko/website/users/login.php
+
+line 12
+$user = Users::current_user();
+WackoPicko/website/users/login.php
+
+line 8
+$bad_login = !(isset($_POST['username']) && isset($_POST['password']));
+WackoPicko/website/users/login.php
+
+line 40
+<tr><td>Username :</td><td> <input type="text" name="username" /></td></tr>
+WackoPicko/website/users/login.php
+
+line 41
+<tr><td>Password :</td><td> <input type="password" name="password" /></td></tr>
+WackoPicko/website/users/login.php
+
+line 10
+$user = Users::current_user();
+WackoPicko/website/users/similar.php
+
+line 24
+$user = Users::get_user($_GET['userid']);
+WackoPicko/website/users/view.php

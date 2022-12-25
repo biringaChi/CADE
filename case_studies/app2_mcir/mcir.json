@@ -1,0 +1,172 @@
+[
+    {
+        "api_validation": "NOT_AVAILABLE",
+        "ml_validation": "VALIDATED_KEY",
+        "line_data_list": [
+            {
+                "line": "\tfunction _pconnect($argHostname, $argUsername, $argPassword, $argProvider='MSDASQL')",
+                "line_num": 130,
+                "path": "MCIR/sqlol/includes/adodb/drivers/adodb-ado5.inc.php",
+                "value": "MSDASQL",
+                "variable": "$argPassword, $argProvider",
+                "entropy_validation": false
+            }
+        ],
+        "ml_probability": 0.6562482118606567,
+        "rule": "Password",
+        "severity": "medium"
+    },
+    {
+        "api_validation": "NOT_AVAILABLE",
+        "ml_validation": "VALIDATED_KEY",
+        "line_data_list": [
+            {
+                "line": "\tfunction _connect($argHostname, $argUsername, $argPassword, $argProvider= 'MSDASQL')",
+                "line_num": 63,
+                "path": "MCIR/sqlol/includes/adodb/drivers/adodb-ado.inc.php",
+                "value": "MSDASQL",
+                "variable": "$argPassword, $argProvider",
+                "entropy_validation": false
+            }
+        ],
+        "ml_probability": 0.6562482118606567,
+        "rule": "Password",
+        "severity": "medium"
+    },
+    {
+        "api_validation": "NOT_AVAILABLE",
+        "ml_validation": "VALIDATED_KEY",
+        "line_data_list": [
+            {
+                "line": "\tfunction _pconnect($argHostname, $argUsername, $argPassword, $argProvider='MSDASQL')",
+                "line_num": 105,
+                "path": "MCIR/sqlol/includes/adodb/drivers/adodb-ado.inc.php",
+                "value": "MSDASQL",
+                "variable": "$argPassword, $argProvider",
+                "entropy_validation": false
+            }
+        ],
+        "ml_probability": 0.6562482118606567,
+        "rule": "Password",
+        "severity": "medium"
+    },
+    {
+        "api_validation": "NOT_AVAILABLE",
+        "ml_validation": "VALIDATED_KEY",
+        "line_data_list": [
+            {
+                "line": "\t$password = 'natsoft';",
+                "line_num": 29,
+                "path": "MCIR/sqlol/includes/adodb/tests/tmssql.php",
+                "value": "natsoft",
+                "variable": "$password",
+                "entropy_validation": false
+            }
+        ],
+        "ml_probability": 0.6473073959350586,
+        "rule": "Password",
+        "severity": "medium"
+    },
+    {
+        "api_validation": "NOT_AVAILABLE",
+        "ml_validation": "VALIDATED_KEY",
+        "line_data_list": [
+            {
+                "line": "\t\t#$dsn = \"driver={IBM db2 odbc DRIVER};Database=test;hostname=localhost;port=50000;protocol=TCPIP; uid=natsoft; pwd=guest\";",
+                "line_num": 366,
+                "path": "MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php",
+                "value": "guest",
+                "variable": "pwd",
+                "entropy_validation": false
+            }
+        ],
+        "ml_probability": 0.7368070483207703,
+        "rule": "Password",
+        "severity": "medium"
+    },
+    {
+        "api_validation": "NOT_AVAILABLE",
+        "ml_validation": "VALIDATED_KEY",
+        "line_data_list": [
+            {
+                "line": "\t\t#$dsn = \"driver={IBM db2 odbc DRIVER};Database=test;hostname=localhost;port=50000;protocol=TCPIP; uid=natsoft; pwd=guest\";",
+                "line_num": 376,
+                "path": "MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php",
+                "value": "guest",
+                "variable": "pwd",
+                "entropy_validation": false
+            }
+        ],
+        "ml_probability": 0.7368070483207703,
+        "rule": "Password",
+        "severity": "medium"
+    },
+    {
+        "api_validation": "NOT_AVAILABLE",
+        "ml_validation": "VALIDATED_KEY",
+        "line_data_list": [
+            {
+                "line": "\t$dsn = \"driver={IBM db2 odbc DRIVER};Database=sample;hostname=localhost;port=50000;protocol=TCPIP; uid=root; pwd=natsoft\";",
+                "line_num": 383,
+                "path": "MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php",
+                "value": "natsoft",
+                "variable": "pwd",
+                "entropy_validation": false
+            }
+        ],
+        "ml_probability": 0.6473073959350586,
+        "rule": "Password",
+        "severity": "medium"
+    },
+    {
+        "api_validation": "NOT_AVAILABLE",
+        "ml_validation": "VALIDATED_KEY",
+        "line_data_list": [
+            {
+                "line": "\t$dsn = \"PROVIDER=MSDASQL;Driver={SQL Server};Server=$server;Database=northwind;uid=adodb;pwd=natsoft\";",
+                "line_num": 467,
+                "path": "MCIR/sqlol/includes/adodb/tests/testdatabases.inc.php",
+                "value": "natsoft",
+                "variable": "adodb;pwd",
+                "entropy_validation": false
+            }
+        ],
+        "ml_probability": 0.6473073959350586,
+        "rule": "Password",
+        "severity": "medium"
+    },
+    {
+        "api_validation": "NOT_AVAILABLE",
+        "ml_validation": "VALIDATED_KEY",
+        "line_data_list": [
+            {
+                "line": "$secret = 'ThisisMYl0ng4ndh5rd2gues%sSekrett!';",
+                "line_num": 27,
+                "path": "MCIR/cryptomg/ctf/challenge5/index.php",
+                "value": "ThisisMYl0ng4ndh5rd2gues%sSekrett!",
+                "variable": "$secret",
+                "entropy_validation": true
+            }
+        ],
+        "ml_probability": 0.8697711229324341,
+        "rule": "Secret",
+        "severity": "medium"
+    },
+    {
+        "api_validation": "NOT_AVAILABLE",
+        "ml_validation": "VALIDATED_KEY",
+        "line_data_list": [
+            {
+                "line": "$admin_password = encode(encrypt(\"Cru@UJUbet69YePejEwr\", $cipher, $mode, $key, $iv), 4);",
+                "line_num": 24,
+                "path": "MCIR/cryptomg/ctf/challenge2/db.php",
+                "value": "Cru@UJUbet69YePejEwr",
+                "variable": "$admin_password",
+                "entropy_validation": false
+            }
+        ],
+        "ml_probability": 0.9639793634414673,
+        "rule": "Password",
+        "severity": "medium"
+    }
+]

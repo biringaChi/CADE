@@ -1,0 +1,81 @@
+line 3
+echo -n "Please enter your database username: ";read username
+MCIR/autoinstall.sh
+
+line 41,43
+$insert_test_users = "INSERT INTO challenge2_users (id, username, password)
+                        VALUES(1, 'admin', '$admin_password'),
+                              (2, 'guest', '$guest_password')";
+MCIR/cryptomg/ctf/challenge2/db.php
+
+line 30
+$_SESSION['username'] = $username;
+MCIR/cryptomg/ctf/challenge2/index.ph
+
+line 46
+$username = htmlentities(@$_POST['username'])
+MCIR/cryptomg/ctf/challenge2/index.ph
+
+line 43
+$GLOBALS['username2'] = $result['username'];
+MCIR/cryptomg/ctf/challenge4/index.php
+
+line 23
+$username = htmlentities($_POST['username']);
+MCIR/cryptomg/ctf/challenge4/register.php
+
+line 27
+$sql_check_user = "SELECT * FROM challenge4_users WHERE username='$username'";
+MCIR/cryptomg/ctf/challenge4/register.php
+
+line 7
+"name": "John Lim",
+MCIR/sqlol/includes/adodb/composer.json
+
+line 12
+"name": "Damien Regad",
+MCIR/sqlol/includes/adodb/composer.json
+
+line 16
+"name": "Mark Newnham",
+MCIR/sqlol/includes/adodb/composer.json
+
+line 172
+ $_user = trim($user);
+MCIR/sqlol/includes/adodb/session/adodb-session.php
+
+line 204
+$_user = trim($user);
+MCIR/sqlol/includes/adodb/session/adodb-session2.php
+
+line 555
+$user           = ADODB_Session::user();
+MCIR/sqlol/includes/adodb/session/adodb-session2.php
+
+line 158
+$ADODB_SESS['user'] = $ADODB_SESSION_USER;
+MCIR/sqlol/includes/adodb/session/old/adodb-session-clob.php
+
+line 34
+username C(50),
+MCIR/sqlol/resetbutton.php
+
+line 39
+name C(50),
+MCIR/sqlol/resetbutton.php
+
+line 54
+$display_column_name = $column_name = 'username';
+MCIR/sqlol/select.php
+
+line 47
+$condition = $display_condition = "username='jsmiley'";
+MCIR/xmlmao/xpath.php
+
+line 81
+$display_xsl_string = str_replace('username', 'START_PAYLOAD' . $_REQUEST['in    ject_string'] . 'END_PAYLOAD', $xsl_string);
+MCIR/xmlmao/xslt.php
+
+line 16
+chmod 666 pxss.html && echo "Hooray\! Everything went fine\!" || echo "Couldn't chmod pxss.html. Do it manual    ly or run setup.sh as root.";
+MCIR/xssmh/setup.sh

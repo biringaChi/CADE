@@ -1,0 +1,19 @@
+line 29
+username VARCHAR(32),
+CryptOMG/ctf/challenge2/db.php
+
+line 30
+$_SESSION['username'] = $username;
+CryptOMG/ctf/challenge2/index.php
+
+line 46
+$username = htmlentities(@$_POST['username']);
+CryptOMG/ctf/challenge2/index.php
+
+line 25
+username VARCHAR(32),
+CryptOMG/ctf/challenge4/db.php
+
+line 23
+$username = htmlentities($_POST['username']);
+CryptOMG/ctf/challenge4/register.php

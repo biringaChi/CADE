@@ -1,0 +1,11 @@
+line 27
+$sql_check_auth = "SELECT * FROM challenge2_users WHERE username='$username' AND password='$password'";
+MCIR/cryptomg/ctf/challenge2/index.php
+
+line 51
+$auth = checkAuth(htmlentities(@$_POST['username']), md5(@$_POST['password']));
+MCIR/cryptomg/ctf/challenge4/index.php
+
+line 38
+$sql_check_auth = "SELECT * FROM challenge4_users WHERE username='$username'";
+MCIR/cryptomg/ctf/challenge4/index.php

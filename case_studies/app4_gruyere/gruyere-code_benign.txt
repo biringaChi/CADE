@@ -1,0 +1,27 @@
+line 61
+<input type='password' name='oldpw'>
+gruyere-code/resources/editprofile.gtl
+
+line 67
+<input type='password' name='pw'>
+gruyere-code/resources/editprofile.gtl
+
+line 54
+var element = document.getElementById('user_name');
+gruyere-code/resources/lib.js
+
+line 28
+<input type='password' name='pw'>
+gruyere-code/resources/login.gtl
+
+line 31
+<input type='password' name='pw'>
+gruyere-code/resources/newaccount.gtl
+
+line 30
+<input type='password' name='oldpw'>
+gruyere-code/resources/showprofile.gtl
+
+line 37
+<input type='password' name='pw'>
+gruyere-code/resources/showprofile.gtl
