@@ -1,4 +1,0 @@
-
-class Inference:
-	# TODO
-	pass
