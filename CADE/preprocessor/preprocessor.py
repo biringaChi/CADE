@@ -21,6 +21,12 @@ class CredDataMiner:
 	def groundtruth(self, filter: List[str]) -> Tuple[list]: 
 		meta = self.meta_data().loc[self.meta_data()[self.gt].isin(filter)]
 		return [fp for fp in meta[self.fp]], [int(lidx) for lidx in meta[self.lsle]]
+	
+	def passwords(self):
+		pass
+
+	def _(self):
+		pass
 
 	def dig(self, data: List[str]) -> Set:
 		temp, out = {}, []
