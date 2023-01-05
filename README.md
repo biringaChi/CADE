@@ -1,7 +1,7 @@
 CADE: Context-Aware Detection of Embedded Credentials
 
 <p align="center">
-  <img src="..doc/todo.svg" width="200%">
+  <img src="..doc/cade.svg" width="99%">
 </p>
 
 Official implementation of CADE, to undergo review and artifact evaluation at USENIX ATC. I will provide full details on the project post notification. 
