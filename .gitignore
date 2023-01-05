@@ -131,9 +131,10 @@ dmypy.json
 # scratch 
 scratch.txt
 benign.txt
-secret.txt
 benign.pickle
 secrets.pickle
-XREADME.md
-ex-bads.svg
-ex-beware.svg
+data
+meta
+
+# Cred
+password.txt

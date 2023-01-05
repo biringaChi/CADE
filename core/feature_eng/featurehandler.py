@@ -9,10 +9,7 @@ from typing import Tuple, Union
 from sklearn.model_selection import train_test_split
 from torch.utils.data import TensorDataset, DataLoader
 
-class MultivariableFeatureHandler:
-	pass
-
-class BinaryFeatureHandler:
+class FeatureHandler:
 	def __init__(self, feature_dir: str = os.getcwd() + "/features/") -> None:
 		self.ut = ut.config()["metacols"]
 		self.clf = ut.config()["clf_params"]

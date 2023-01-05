@@ -3,6 +3,7 @@
 		"fp" : "FilePath",
 		"lsle" : "LineStart:LineEnd",
 		"gt" : "GroundTruth",
+		"cat" : "Category",
 		"sn" : "secret.txt",
 		"bn" : "benign.txt",
 		"obslen" : 5000

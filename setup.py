@@ -1,5 +1,5 @@
 import os
-from CADE.utils import Utils
+from core.utils import Utils
 from setuptools import setup
 
 setup(
