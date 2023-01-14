@@ -19,14 +19,14 @@ class FeatureHandler:
 		secrets, benign = ut.unpickle(self.feature_dir + "secrets.pickle"), ut.unpickle(self.feature_dir + "benign.pickle")
 		return np.concatenate((secrets, benign))
 	
-	def class_encoder(self) -> np.ndarray[float]:
-		secrets, benign = [
-			self.clf["pos_lab"] for _ in range(self.ut["obslen"])
-		], [
-			self.clf["neg_lab"] for _ in range(self.ut["obslen"])
-		]
+	def binary_class_encoder(self) -> np.ndarray[float]:
+		secrets = [self.clf["pos_lab"] for _ in range(self.ut["obslen"])]
+		benign = [self.clf["neg_lab"] for _ in range(self.ut["obslen"])]
 		return np.array(secrets + benign)
 	
+	def multivariable_class_encoder(self): 
+		pass
+
 	def data_loader(self, X, y) -> torch.FloatTensor:
 		return DataLoader(
 				TensorDataset(
@@ -53,3 +53,8 @@ class FeatureHandler:
 				self.data_loader(X_val, y_val),
 				self.data_loader(X_test, y_test)
 			)
+
+class ClassEncoder:
+	def __init__(self) -> None:
+		pass
+	

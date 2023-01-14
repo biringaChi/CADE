@@ -1,10 +1,11 @@
 from __future__ import with_statement
+
 import sys
 sys.path.append(".")
 import os
 import pandas
 import typing
-from core.utils import Utils as ut
+from CADE.utils import Utils as ut
 
 class CredentialExtractor:
     def __init__(self, meta_path: str = None, secrets_path: str = None) -> None:

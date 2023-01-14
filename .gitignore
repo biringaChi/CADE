@@ -138,3 +138,10 @@ meta
 
 # Cred
 password.txt
+generic_secret.txt
+private_key.txt
+generic_token.txt
+predefined_pattern.txt
+auth_key_token.txt
+seed_salt_nonce.txt
+other.txt

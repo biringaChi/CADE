@@ -1,0 +1,26 @@
+{
+	"metadata" : {
+		"fp" : "FilePath",
+		"lsle" : "LineStart:LineEnd",
+		"gt" : "GroundTruth",
+		"cat" : "Category",
+		"sn" : "secret.txt",
+		"bn" : "benign.txt",
+		"obslen" : 5000
+	},
+	"groundtruth" : {
+		"negative" : "F",
+		"positive" : "T",
+		"partial_positive" : "Template"
+	},
+    "category" : {
+		"password" : ["Password"],
+		"generic_secret" : ["Generic Secret"],
+		"private_key" : ["Private Key"],
+		"generic_token" : ["Generic Token"],
+		"predefined_pattern" : ["Predefined Pattern"],
+		"auth_key_token" : ["Authentication Key & Token"],
+		"seed_salt_nonce" : ["Seed, Salt, Nonce"],
+		"other" : ["Other"]
+	}
+}

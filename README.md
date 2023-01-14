@@ -1,11 +1,15 @@
-CADE: Context-Aware Detection of Embedded Credentials
+<h2 align = "center"> CADE </h2>
 
 <p align="center">
-  <img src="..doc/cade.svg" width="99%">
+  <img src="..doc/cade.svg" width="95%">
 </p>
 
-Official implementation of CADE, to undergo review and artifact evaluation at USENIX ATC. I will provide full details on the project post notification. 
+Official implementation of CADE: Context-Aware Detection of Embedded Credentials, to undergo review at ACM DTRAP.
 
-For artifact evaluator(s), please follow the instructions below to reproduce the results presented in the paper. 
+For reviewer(s), please follow the instructions below to reproduce the results presented in the paper. 
 
-***TODO***  
+### Installation
+```
+$ git clone https://github.com/biringaChi/CADE
+$ cd CADE; pip install -r requirements.txt
+```

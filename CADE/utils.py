@@ -21,21 +21,33 @@ class Utils:
 	
 	@classmethod
 	def pickle(self, data: List[Union[str, float]], file_name: str):
-		with open(file_name, "wb") as file:
-			pickle.dump(data, file)
+		try:
+			with open(file_name, "wb") as file:
+				pickle.dump(data, file)
+		except FileNotFoundError as e:
+			raise(e)
 	
 	@classmethod
 	def unpickle(self, data: List[Union[str, float]]) -> Union[List[str], List[float]]:
-		with open(data, "rb") as file:
-			loaded = pickle.load(file)
-		return loaded
+		try:
+			with open(data, "rb") as file:
+				return pickle.load(file)
+		except FileNotFoundError as e:
+			raise(e)
 	
 	@classmethod
 	def reader(self, root: str, file: str) -> List:
-		with open(os.path.join(root, file), "r") as f:
-			return f.readlines()
+		try:
+			with open(os.path.join(root, file), "r") as f:
+				return f.readlines()
+		except FileNotFoundError as e:
+			raise(e)
 	
 	@classmethod
-	def config(self, path: str = "configs/config.json"):
-		with open(path, "r") as f:
-			return json.load(f)
+	def config(self, path: List[str] = ["configs/default.json", "configs/ml.json"]):
+		try:
+			with open(path[0], "r") as default, open(path[1], "r") as ml:
+				return json.load(default), json.load(ml)
+		except FileNotFoundError as e:
+			raise(e)
+			
