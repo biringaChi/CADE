@@ -1,26 +1,28 @@
 from __future__ import with_statement
-
 import re
 import os
 import json
 import pickle
-from typing import Dict, Sequence, List, Set, Text, Union
+import typing
 
 class Utils:
+	"""
+	This module is reponsible for providing helper methods
+	"""
 	@classmethod
-	def __len__(self, arg: Union[Sequence, Text, Dict, Set]) -> int:
+	def __len__(self, arg: typing.Union[typing.Sequence, typing.Text, typing.Dict, typing.Set]) -> int:
 		if (isinstance(arg, (int, float, bool))):
 			raise TypeError("Invalid argument. Only text, sequence, mapping and set are accepted")
 		else: return len(arg)
 
 	@classmethod
-	def cleaner(self, data: List[str]) -> List[str]:
+	def cleaner(self, data: typing.List[str]) -> typing.List[str]:
 		out = []
 		[out.append(re.sub(r"[^\w\s]", "", obs.strip())) for obs in data]
 		return out
 	
 	@classmethod
-	def pickle(self, data: List[Union[str, float]], file_name: str):
+	def pickle(self, data: typing.List[typing.Union[str, float]], file_name: str):
 		try:
 			with open(file_name, "wb") as file:
 				pickle.dump(data, file)
@@ -28,7 +30,7 @@ class Utils:
 			raise(e)
 	
 	@classmethod
-	def unpickle(self, data: List[Union[str, float]]) -> Union[List[str], List[float]]:
+	def unpickle(self, data: typing.List[typing.Union[str, float]]) -> typing.Union[typing.List[str], typing.List[float]]:
 		try:
 			with open(data, "rb") as file:
 				return pickle.load(file)
@@ -36,7 +38,7 @@ class Utils:
 			raise(e)
 	
 	@classmethod
-	def reader(self, root: str, file: str) -> List:
+	def reader(self, root: str, file: str) -> typing.List:
 		try:
 			with open(os.path.join(root, file), "r") as f:
 				return f.readlines()
@@ -44,10 +46,13 @@ class Utils:
 			raise(e)
 	
 	@classmethod
-	def config(self, path: List[str] = ["configs/default.json", "configs/ml.json"]):
+	def config(self, path: typing.List[str] = ["configs/default.json", "configs/ml.json"]):
 		try:
 			with open(path[0], "r") as default, open(path[1], "r") as ml:
 				return json.load(default), json.load(ml)
 		except FileNotFoundError as e:
 			raise(e)
-			
+	
+	@classmethod
+	def process_message(self, msg: str):
+		print(msg)

@@ -1,32 +1,30 @@
 from __future__ import with_statement
-
 import sys
 sys.path.append(".")
 import os
 import pandas
 import typing
+from CADE.config import Config
 from CADE.utils import Utils as ut
 
 class CredentialExtractor:
     def __init__(self, meta_path: str = None, secrets_path: str = None) -> None:
         self.meta_path = meta_path
         self.secrets_path = secrets_path
-        self.ut = ut.config()["metacols"]
-        self.fp, self.lsle = self.ut["fp"], self.ut["lsle"]
-        self.gt, self.cat = self.ut["gt"], self.ut["cat"]
+        self.config = Config()
     
     def metadata(self) -> pandas.DataFrame:
         try:
             meta: pandas.DataFrame = pandas.read_csv(self.meta_path)
         except FileNotFoundError as e:
             raise(e)
-        meta[self.fp] = meta[self.fp].apply(lambda fp: fp.split("/")[-1]) 
-        meta[self.lsle] = meta[self.lsle].apply(lambda x: x.split(":")[0])
+        meta[self.config.fp] = meta[self.config.fp].apply(lambda fp: fp.split("/")[-1]) 
+        meta[self.config.lsle] = meta[self.config.lsle].apply(lambda x: x.split(":")[0])
         return meta
     
     def groundtruth(self, groundtruth: typing.List[str], category: typing.List[str]) -> typing.Tuple[typing.List]: 
-        meta = self.metadata().loc[(self.metadata()[self.gt].isin(groundtruth)) & (self.metadata()[self.cat].isin(category))]
-        return [fp for fp in meta[self.fp]], [int(lidx) for lidx in meta[self.lsle]]
+        meta = self.metadata().loc[(self.metadata()[self.config.gt].isin(groundtruth)) & (self.metadata()[self.config.cat].isin(category))]
+        return [fp for fp in meta[self.config.fp]], [int(lidx) for lidx in meta[self.config.lsle]]
 
     def extract(self, data: typing.List[str]) -> typing.Set[str]:
         temp, out = {}, []

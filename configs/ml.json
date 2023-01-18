@@ -1,4 +1,9 @@
 {
+	"ml" : {
+		"beta" : 0.5,
+		"f1_score" : "f1", 
+		"prec" : "precision"
+	},
 	"dl" : {
 		"default" : {
 			"max_iter" : 20000,
@@ -8,6 +13,16 @@
 			"batch_size" : 32,
 			"pos_lab" : 1, 
 			"neg_lab" : 0,
+			
+			"pwd_lab" : 0,
+			"gensec_lab" : 1, 
+			"privkey_lab" : 2,
+			"gentok_lab" : 3,
+			"predpath_lab" : 4,
+			"authkeytok_lab" : 5,
+			"sesano_lab" : 6,
+			"other" : 7,
+			
 			"random_state" : 4,
 			"test_size" : 0.2,
 			"sample" : 5,
@@ -28,17 +43,12 @@
 			"kernel" : 3, 
 			"stride" : 1,
 			"padding" : 1,
-			"pool" : 10
+			"pooling" : 10
 		},
 		"bert" : {
 			"model_type" : "bert",
 			"model_name" : "bert-base-uncased",
 			"combine_strategy" :  ["concat", "mean"]
 		}
-	},
-	"ml" : {
-		"beta" : 0.5,
-		"f1_score" : "f1", 
-		"precision" : "precision"
 	}
 }

@@ -9,9 +9,9 @@
 		"obslen" : 5000
 	},
 	"groundtruth" : {
-		"negative" : "F",
-		"positive" : "T",
-		"partial_positive" : "Template"
+		"negative" : ["F"],
+		"positive" : ["T"],
+		"partial_positive" : ["Template"]
 	},
     "category" : {
 		"password" : ["Password"],

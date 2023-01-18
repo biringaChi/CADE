@@ -1,9 +1,0 @@
-line 30,33
-$sql_insert_data = "INSERT INTO challenge4_users (id, username, password, email)
-                                                                                VALUES(1, 'admin', '".                                                                                md5("@4rfhaOsd(#d4l;hp)")."',                                                                             
-                                                                                'admin@example.org')";
-CryptOMG/ctf/challenge4/db.php 
-
-line 22
-$db_user = "";
-CryptOMG/includes/db.inc.php
