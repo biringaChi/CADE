@@ -19,7 +19,7 @@ class Config:
 		self.groundtruth: typing.Dict = self.default["groundtruth"]
 		self.positive: typing.List[str] = self.groundtruth["positive"]
 		self.negative: typing.List[str] = self.groundtruth["negative"]
-		self.partial_positive: str = self.groundtruth["partial_positive"]
+		self.partial: str = self.groundtruth["partial"]
 
 		self.category: typing.Dict = self.default["category"]
 		self.password: typing.List[str] = self.category["password"]

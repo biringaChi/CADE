@@ -55,4 +55,8 @@ class Utils:
 	
 	@classmethod
 	def process_message(self, msg: str):
-		print(msg)
+		print("Process:::"+ msg)
+
+
+
+Utils.process_message

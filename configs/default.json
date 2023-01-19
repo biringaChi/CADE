@@ -11,7 +11,7 @@
 	"groundtruth" : {
 		"negative" : ["F"],
 		"positive" : ["T"],
-		"partial_positive" : ["Template"]
+		"partial" : ["Template"]
 	},
     "category" : {
 		"password" : ["Password"],
