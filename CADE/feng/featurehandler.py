@@ -24,7 +24,7 @@ class FeatureHandler:
 		benign = [self.clf["neg_lab"] for _ in range(self.ut["obslen"])]
 		return np.array(secrets + benign)
 	
-	def multivariable_class_encoder(self): 
+	def multivariate_class_encoder(self): 
 		pass
 
 	def data_loader(self, X, y) -> torch.FloatTensor:

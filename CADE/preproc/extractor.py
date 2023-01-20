@@ -21,9 +21,13 @@ class CredentialExtractor:
         meta[self.config.fp] = meta[self.config.fp].apply(lambda fp: fp.split("/")[-1]) 
         meta[self.config.lsle] = meta[self.config.lsle].apply(lambda x: x.split(":")[0])
         return meta
-    
-    def groundtruth(self, groundtruth: typing.List[str], category: typing.List[str] = [None]) -> typing.Tuple[typing.List]: 
-        meta = self.metadata().loc[(self.metadata()[self.config.gt].isin(groundtruth)) & (self.metadata()[self.config.cat].isin(category))]
+
+    def neg(self, groundtruth: typing.List[str]) -> typing.Tuple[typing.List]: 
+        return ([fp for fp in self.metadata().loc[self.metadata()[self.config.gt].isin(groundtruth)][self.config.fp]], 
+                [int(lidx) for lidx in self.metadata().loc[self.metadata()[self.config.gt].isin(groundtruth)][self.config.lsle]])
+
+    def groundtruth(self, groundtruth: typing.List[str], category: typing.List[str]) -> typing.Tuple[typing.List]: 
+        meta = self.metadata().loc[self.metadata()[self.config.gt].isin(groundtruth) & self.metadata()[self.config.cat].isin(category)]
         return [fp for fp in meta[self.config.fp]], [int(lidx) for lidx in meta[self.config.lsle]]
 
     def extract(self, data: typing.List[str]) -> typing.Set[str]:

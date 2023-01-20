@@ -56,7 +56,7 @@ class Config:
 		self.sample: int = self.gen["sample"]
 		self.dropout: float = self.gen["dropout"]
 		self.binary_task_lab: int = self.gen["label_binary"]
-		self.multiclass_task_lab: int = self.gen["label_multivariable"]
+		self.multiclass_task_lab: int = self.gen["label_multivariate"]
 
 		self.trainer: typing.Dict = self.ml["dl"]["trainer"]
 		self.epochs: int = self.trainer["epochs"]

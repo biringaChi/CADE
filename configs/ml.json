@@ -28,7 +28,7 @@
 			"sample" : 5,
 			"dropout" : 0.25,
 			"label_binary" : 1,
-			"label_multivariable" : 8
+			"label_multivariate" : 8
 		},
 		"trainer" : {
 			"epochs" : 5, 

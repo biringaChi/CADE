@@ -38,11 +38,11 @@ class BERTCORE(torch.nn.Module):
 		self.BERT = transformers.BertModel.from_pretrained(self.bert_config["model_name"])
 
 		self.binary = self.default_config["target_binary"]
-		self.multivariable = self.default_config["target_multivariable"]
+		self.multivariate = self.default_config["target_multivariate"]
 		self.out_features = self.default_config["out"]
 		
 		self.fully_connected_binary = torch.nn.Linear(self.out_features, self.binary) 
-		self.fully_connected_multivariable = torch.nn.Linear(self.out_features, self.multivariable) 
+		self.fully_connected_multivariate = torch.nn.Linear(self.out_features, self.multivariate) 
 
 	def forward(self, input_ids, attention_mask, token_type_ids = None):
 		_, out = self.BERT(input_ids, attention_mask, output_all_encoded_layers = False)
@@ -51,7 +51,7 @@ class BERTCORE(torch.nn.Module):
 
 		out = self.fully_connected_binary(out)
 		bout = self.sigmoid(out)
-		mout = self.fully_connected_multivariable(self.out_features, self.multivariable) 
+		mout = self.fully_connected_multivariate(self.out_features, self.multivariate) 
 		return out
  
 class CNN(torch.nn.Module):
@@ -73,7 +73,7 @@ class CNN(torch.nn.Module):
 		self.fc = torch.nn.Linear(self.cnn_params["in_features"] * self.cnn_params["in_features"], self.cnn_params["out_features"])
 		self.fcbinary = torch.nn.Linear(self.cnn_params["out_features"], self.cnn_params["label"]) # sigmoid
 
-		self.multivariable
+		# self.multivariate
 
 		self.model = torch.nn.Sequential(
 			self.first_layer,
