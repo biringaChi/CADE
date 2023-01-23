@@ -11,10 +11,8 @@ class Config:
 		self.fp: str = self.metadata["fp"]
 		self.lsle: str = self.metadata["lsle"]
 		self.gt: str = self.metadata["gt"]
-		self.cat: str = self.metadata["cat"]
-		self.sn: str = self.metadata["sn"]
-		self.cat: str = self.metadata["cat"]
-		self.obslen: int = self.metadata["obslen"]
+		self.credentials: str = self.metadata["credentials"]
+		self.non_credentials: str = self.metadata["non_credentials"]
 
 		self.groundtruth: typing.Dict = self.default["groundtruth"]
 		self.positive: typing.List[str] = self.groundtruth["positive"]

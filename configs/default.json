@@ -3,10 +3,8 @@
 		"fp" : "FilePath",
 		"lsle" : "LineStart:LineEnd",
 		"gt" : "GroundTruth",
-		"cat" : "Category",
-		"sn" : "secret.txt",
-		"bn" : "benign.txt",
-		"obslen" : 5000
+		"credentials" : "credentials",
+		"non_credentials" : "non_credentials"
 	},
 	"groundtruth" : {
 		"negative" : ["F"],

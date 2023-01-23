@@ -145,6 +145,9 @@ predefined_pattern.txt
 auth_key_token.txt
 seed_salt_nonce.txt
 other.txt
-
+neg.txt
+positive.txt
+credentials.txt
+non_credentials.txt
 Vulnerable Apps Summary.pdf
 testcred

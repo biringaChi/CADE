@@ -1,5 +1,5 @@
 import os
-from CADE.utils import Utils
+from CADE.utils import Utils as ut
 from setuptools import setup
 
 setup(
@@ -9,6 +9,6 @@ setup(
 	author = "Chidera 'Chi' Biringa",
 	author_email = "biringachidera@gmail.com",
 	url = "https://github.com/biringaChi/CADE",
-	install_requires = [req.rstrip() for req in Utils.reader(os.getcwd(), "requirements.txt")],
+	install_requires = [req.rstrip() for req in ut.reader(os.getcwd(), "requirements.txt")],
 	python_requires = ">=3.9.0"
 )
