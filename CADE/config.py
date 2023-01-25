@@ -1,9 +1,13 @@
 import sys
-import typing
 sys.path.append(".")
+
+import typing
 from CADE.utils import Utils
 
 class Config:
+	"""
+	Configuration File
+	"""
 	def __init__(self) -> None:
 		self.default, self.ml = Utils.config()
 

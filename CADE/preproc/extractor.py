@@ -1,17 +1,31 @@
 from __future__ import with_statement
 import sys
 sys.path.append(".")
+
 import os
 import pandas
 import typing
+
 from CADE.config import Config
 from CADE.utils import Utils as ut
 
 class CredentialExtractor:
+    """
+    Extracts Embedded Credentials.
+    Args: 
+        Embedded Credential Directory.
+        Corresponding Metadata Directory.
+    """
     def __init__(self, meta_path: str = None, secrets_path: str = None) -> None:
         self.meta_path = meta_path
         self.secrets_path = secrets_path
         self.config = Config()
+
+    def __str__(self) -> str:
+        return self.__class__.__name__
+
+    def __repr__(self) -> str:
+        return self.__str__()
     
     def metadata(self) -> pandas.DataFrame:
         try:
@@ -22,16 +36,17 @@ class CredentialExtractor:
         meta[self.config.lsle] = meta[self.config.lsle].apply(lambda x: x.split(":")[0])
         return meta
 
-    def neg(self, groundtruth: typing.List[str]) -> typing.Tuple[typing.List]: 
+    def groundtruth_bin(self, groundtruth: typing.List[str]) -> typing.Tuple[typing.List]: 
         return ([fp for fp in self.metadata().loc[self.metadata()[self.config.gt].isin(groundtruth)][self.config.fp]], 
                 [int(lidx) for lidx in self.metadata().loc[self.metadata()[self.config.gt].isin(groundtruth)][self.config.lsle]])
 
-    def groundtruth(self, groundtruth: typing.List[str], category: typing.List[str]) -> typing.Tuple[typing.List]: 
-        meta = self.metadata().loc[self.metadata()[self.config.gt].isin(groundtruth) & self.metadata()[self.config.cat].isin(category)]
+    def groundtruth_mult(self, groundtruth: typing.List[str], category: typing.List[str]) -> typing.Tuple[typing.List]: 
+        meta = self.metadata().loc[self.metadata()[self.config.gt].isin(groundtruth) & self.metadata()[self.config.category].isin(category)]
         return [fp for fp in meta[self.config.fp]], [int(lidx) for lidx in meta[self.config.lsle]]
 
     def extract(self, data: typing.List[str]) -> typing.Set[str]:
-        temp, out = {}, []
+        temp = {}
+        out = []
         filepath, lineidx = data
         for fp, lidx in zip(filepath, lineidx):
             if fp in temp:

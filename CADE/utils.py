@@ -1,4 +1,5 @@
-from __future__ import with_statement
+from __future__ import with_statement, print_function
+
 import re
 import os
 import json
@@ -17,9 +18,7 @@ class Utils:
 
 	@classmethod
 	def cleaner(self, data: typing.List[str]) -> typing.List[str]:
-		out = []
-		[out.append(re.sub(r"[^\w\s]", "", obs.strip())) for obs in data]
-		return out
+		return [re.sub(r"[^\w\s]", "", obs.strip()) for obs in data]
 	
 	@classmethod
 	def pickle(self, data: typing.List[typing.Union[str, float]], file_name: str):
