@@ -26,7 +26,6 @@ class Generator:
     def binary_clstask(self) -> typing.Text:
         for meta_dir, cred_dir in zip(self.meta_dirs, self.cred_dirs):
             CE = CredentialExtractor(self.meta_path + meta_dir, self.cred_path + cred_dir)
-            category = [cat[0] for cat in self.config.category.values()]
             CE.write(self.location + self.config.credentials + ".txt", CE.groundtruth_bin(self.config.positive))
             CE.write(self.location + self.config.non_credentials + ".txt", CE.groundtruth_bin(self.config.negative))
 
@@ -59,10 +58,10 @@ class Generator:
         )
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description = "Generates Embedded Credentials' Observations for Binary & Multivariate Classification Task")
-    gen = Generator()
+    parser = argparse.ArgumentParser(description = "Generates Embedded Credentials' Observations for Binary & Multivariate Classification Tasks")
     parser.add_argument("--task", type = str)
     args = parser.parse_args()
+    gen = Generator()
     if re.match(args.task, "bin", re.IGNORECASE): 
         gen.get_bin()
     elif re.match(args.task, "mult", re.IGNORECASE): 
