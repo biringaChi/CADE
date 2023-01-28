@@ -45,8 +45,7 @@ class CredentialExtractor:
         return [fp for fp in meta[self.config.fp]], [int(lidx) for lidx in meta[self.config.lsle]]
 
     def extract(self, data: typing.List[str]) -> typing.Set[str]:
-        temp = {}
-        out = []
+        temp, out = {}, []
         filepath, lineidx = data
         for fp, lidx in zip(filepath, lineidx):
             if fp in temp:

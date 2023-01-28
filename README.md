@@ -13,7 +13,7 @@ Artifact Author: Chidera Biringa
 
 ## Datasets (D)
 ### D <sub>1</sub> : CREDDATA (In-Distribution Training, Validation & Testing) 
-CREDDATA is a benchmark credential dataset that comprises eight embedded credential categories: password (30.44%), generic secret (23.04%), private key (19.64%), generic token (21.65%), predefined pattern (7.14%), (authentication key & token (1.46%)), (seed, salt & nonce (0.85%)), and other(8.16%)}. 4,583 is the total number of positive observations with groundtruth labeled {T, F}, where "T" indicates a positive class (an embedded credential), and "F" indicate a negative class (inverse of T). Please visit [CREDDATA REPOSITORY](https://github.com/Samsung/CredData) for more information.
+CREDDATA is a benchmark credential dataset that comprises eight embedded credential categories: password (30.44%), generic secret (23.04%), private key (19.64%), generic token (21.65%), predefined pattern (7.14%), (authentication key & token (1.46%)), (seed, salt & nonce (0.85%)), and other(8.16%)}. 4,583 is the total number of positive observations with ground-truth labeled {T, F}, where "T" indicates a positive class (an embedded credential), and "F" indicate a negative class (inverse of T). Please visit [CREDDATA REPOSITORY](https://github.com/Samsung/CredData) for more information.
 
 #### Extracting Embedded Credentials
 Unzip repository directories and corresponding metadata
@@ -46,7 +46,7 @@ Binary Classification Task (BCT)
 ```
 $ python generator.py --task = bin
 ```
-Note: BCT generation takes ~3 minutes to complete. This is because negative observations (non_credentials.txt) are north of 42K.
+>Note: BCT generation takes ~2 minutes to complete. This is because negative observations (non_credentials) are north of 42K.
 
 BCT Directory
 ```
@@ -59,17 +59,26 @@ Default (MCT & BCT)
 $ python generator.py
 ```
 ### D<sub>2</sub> : Case Studies (Out-of-Distribution Detection (OOD))
-In the case studies directory ```(CADE -> datasets -> casestudies)```, we have five vulnerable software repository directories ```(CADE -> datasets -> casestudies -> [cryptomg, mcir, wackopicko, gruyere, wrongsecrets])```, and data directory ```(CADE -> datasets -> data)```. Aforementioned repositories are used to evaluate the out-of-distribution predictive performance of our models.
+In the case studies directory ```(CADE -> datasets -> casestudies)```, we have five vulnerable software repository directories ```(CADE -> datasets -> casestudies -> [cryptomg, mcir, wackopicko, gruyere, wrongsecrets])```, and data directory ```(CADE -> datasets -> data)```. We use the aforementioned repositories to evaluate the out-of-distribution predictive performance of our models.
 
-Each software repository directory (e.g., cryptomg) contains:
+Software directory (e.g., cryptomg) contains post-extracted observations:
 <ul>
      <li> {sw_repo}: software repository </li>
      <li> {sw_repo}_cred.txt: total number of embedded credentials found via manual analysis </li>
      <li> {sw_repo}_numfiles.txt: total of number of files </li>
      <li> benign_{category}.txt: benign observations in specified category found via manual analysis </li>
      <li> {category}.txt: credential observations in specified category found via manual analysis </li>
-     <li> {sw_repo}_{category}.json: credential observations in specified category found via automated analysis </li>
-     <li></li>
+     <li> {sw_repo}_{category}.json: credential observations in specified category found via automated analysis using CredSweeper (credential detection tool used for automated ground-truth labeling)</li>
 </ul>
 
-**MORE TODO**
+In data ```(CADE -> datasets -> data)```, we split observations into benign ```(CADE -> datasets -> data -> benign)``` & credential ```(CADE -> datasets -> data -> credential)``` directories. (note, not by software repository directories)\
+Benign contains:
+<ul>
+     <li> {benign}.txt: all benign observations found via manual analysis independent of category </li>
+     <li> {benign}_{category}.txt: all benign observations in specified category independent of s/w repo. found via manual analysis </li>
+</ul>
+
+**TODO**
+
+<!-- ## Feature Engineering 
+**TODO** -->
