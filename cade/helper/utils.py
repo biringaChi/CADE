@@ -45,7 +45,7 @@ class Utils:
 			raise(e)
 	
 	@classmethod
-	def config(self, path: typing.List[str] = ["configs/default.json", "configs/ml.json"]):
+	def config(self, path: typing.List[str]):
 		try:
 			with open(path[0], "r") as default, open(path[1], "r") as ml:
 				return json.load(default), json.load(ml)

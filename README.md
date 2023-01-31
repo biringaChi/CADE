@@ -27,13 +27,13 @@ $ cd ...; CADE/preproc
 First, verify **credential** directory exists, create one if negative &  backtrack to **prepoc**
 ```
  $ cd ...; datasets/creddata
- $ if [ ! -d credentials/ ]; then mkdir credentials; else echo "exists"; fi
+ $ if [ ! -d credentials/ ]; then mkdir credentials; else echo "exists!"; fi
  $ cd ...; CADE/preproc
 ```
 
 Multivariate Classification Task (MCT)
 ``` 
-$ python generator.py --task = mult
+$ python generator.py mult
 ```
 MCT Directory
 ```
@@ -44,7 +44,7 @@ CADE -> datasets -> creddata -> credentials
 
 Binary Classification Task (BCT)
 ```
-$ python generator.py --task = bin
+$ python generator.py bin
 ```
 >Note: BCT generation takes ~2 minutes to complete. This is because negative observations (non_credentials) are north of 42K.
 
@@ -59,7 +59,7 @@ Default (MCT & BCT)
 $ python generator.py
 ```
 ### D<sub>2</sub> : Case Studies (Out-of-Distribution Detection (OOD))
-In the case studies directory ```(CADE -> datasets -> casestudies)```, we have five vulnerable software repository directories ```(CADE -> datasets -> casestudies -> [cryptomg, mcir, wackopicko, gruyere, wrongsecrets])```, and data directory ```(CADE -> datasets -> data)```. We use the aforementioned repositories to evaluate the out-of-distribution predictive performance of our models.
+In the case studies directory ```(CADE -> datasets -> casestudies)```, we have five vulnerable software repository directories ```(CADE -> datasets -> casestudies -> [cryptomg, mcir, wackopicko, gruyere, wrongsecrets])```, data ```(CADE -> datasets -> data)```, and credsweeper ```(CADE -> datasets -> credsweeper)``` directories. We use the aforementioned repositories to evaluate the out-of-distribution predictive performance of our models.
 
 Software directory (e.g., cryptomg) contains post-extracted observations:
 <ul>
@@ -72,13 +72,15 @@ Software directory (e.g., cryptomg) contains post-extracted observations:
 </ul>
 
 In data ```(CADE -> datasets -> data)```, we split observations into benign ```(CADE -> datasets -> data -> benign)``` & credential ```(CADE -> datasets -> data -> credential)``` directories. (note, not by software repository directories)\
-Benign contains:
+Benign & Credential contains:
 <ul>
-     <li> {benign}.txt: all benign observations found via manual analysis independent of category </li>
-     <li> {benign}_{category}.txt: all benign observations in specified category independent of s/w repo. found via manual analysis </li>
+     <li> {benign} & {credential}.txt: all observations found via manual analysis independent of category </li>
+     <li> {benign} & {category}.txt: all observations in specified categories found via manual analysis independent of the software repository </li>
 </ul>
 
-**TODO**
+Credsweeper ```(CADE -> datasets -> credsweeper)``` contains: 
+<ul>
+     <li> {category}.json: independent embedded credential observations found via automated analysis using CredSweeper independent of software repositories </li>
+</ul>
 
-<!-- ## Feature Engineering 
-**TODO** -->
+**MORE TODO**

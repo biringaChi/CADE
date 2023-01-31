@@ -1,14 +1,11 @@
-import sys
-sys.path.append(".")
-
 import argparse
 import os
 import typing
 import re
 
-from CADE.config import Config
-from CADE.utils import Utils as ut
-from extractor import CredentialExtractor
+# from code.conf import Config
+# from code.utils import Utils as ut
+# from extractor import CredentialExtractor
 
 class Generator:
     """
@@ -59,12 +56,12 @@ class Generator:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description = "Generates Embedded Credentials' Observations for Binary & Multivariate Classification Tasks")
-    parser.add_argument("--task", type = str)
+    parser.add_argument("task", type = str, help = "Enter classification (bin or mult) task")
     args = parser.parse_args()
     gen = Generator()
     if re.match(args.task, "bin", re.IGNORECASE): 
         gen.get_bin()
     elif re.match(args.task, "mult", re.IGNORECASE): 
-        gen.get_mult()
+        gen.get_mult() 
     else: 
         gen.get_default()

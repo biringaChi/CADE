@@ -1,15 +1,16 @@
-import sys
-sys.path.append(".")
-
 import typing
-from CADE.utils import Utils
+import importlib
+from pathlib import Path as pth
 
 class Config:
 	"""
 	Configuration File
 	"""
 	def __init__(self) -> None:
-		self.default, self.ml = Utils.config()
+		self.configs_pth: str = pth.cwd().parents[1] / "configs"
+		self.utils_module = importlib.import_module("utils")
+		self.utils = self.utils_module.Utils
+		self.default, self.ml = self.utils.config([self.configs_pth / "default.json", self.configs_pth / "ml.json"])
 
 		self.metadata: typing.Dict = self.default["metadata"]
 		self.fp: str = self.metadata["fp"]
