@@ -1,14 +1,14 @@
 import typing
-import importlib
+import importlib as im
 from pathlib import Path as pth
 
 class Config:
 	"""
-	Configuration File
+	Configurations
 	"""
 	def __init__(self) -> None:
 		self.configs_pth: str = pth.cwd().parents[1] / "configs"
-		self.utils_module = importlib.import_module("utils")
+		self.utils_module = im.import_module("utils")
 		self.utils = self.utils_module.Utils
 		self.default, self.ml = self.utils.config([self.configs_pth / "default.json", self.configs_pth / "ml.json"])
 

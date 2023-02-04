@@ -14,7 +14,8 @@ class Utils:
 	def __len__(self, arg: typing.Union[typing.Sequence, typing.Text, typing.Dict, typing.Set]) -> int:
 		if (isinstance(arg, (int, float, bool))):
 			raise TypeError("Invalid argument. Only text, sequence, mapping and set are accepted")
-		else: return len(arg)
+		else: 
+			return len(arg)
 
 	@classmethod
 	def cleaner(self, data: typing.List[str]) -> typing.List[str]:

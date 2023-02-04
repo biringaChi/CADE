@@ -1,6 +1,6 @@
-import os
-# from cade.utils import Utils as ut
+import importlib as i
 from setuptools import setup
+from pathlib import Path as pth
 
 setup(
 	name = "CADE",
@@ -9,6 +9,6 @@ setup(
 	author = "Chidera 'Chi' Biringa",
 	author_email = "biringachidera@gmail.com",
 	url = "https://github.com/biringaChi/CADE",
-	# install_requires = [req.rstrip() for req in ut.reader(os.getcwd(), "requirements.txt")],
-	python_requires = ">=3.9.0"
+	python_requires = ">=3.9.0",
+	install_requires = [req.rstrip() for req in i.util.spec_from_file_location("utils", pth.cwd() / "cade" / "helper" / "utils.py").loader.load_module().Utils.reader(pth.cwd(), "requirements.txt")]
 )
