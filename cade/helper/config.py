@@ -16,6 +16,8 @@ class Config:
 		self.fp: str = self.metadata["fp"]
 		self.lsle: str = self.metadata["lsle"]
 		self.gt: str = self.metadata["gt"]
+		self.cat: str = self.metadata["cat"]
+
 		self.credentials: str = self.metadata["credentials"]
 		self.non_credentials: str = self.metadata["non_credentials"]
 

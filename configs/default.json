@@ -3,8 +3,9 @@
 		"fp" : "FilePath",
 		"lsle" : "LineStart:LineEnd",
 		"gt" : "GroundTruth",
-		"credentials" : "credentials",
-		"non_credentials" : "non_credentials"
+		"cat" : "Category",
+		"credentials" : "credentials.txt",
+		"non_credentials" : "non_credentials.txt"
 	},
 	"groundtruth" : {
 		"negative" : ["F"],

@@ -2,71 +2,65 @@ import re
 import os
 import typing
 import argparse
-import importlib as im
-from pathlib import Path as pth
+from pathlib import Path
+from extractor import CredentialExtractor
 
-# ZIP CRED DIRECTORY
-
-class Generator:
+class Generator(CredentialExtractor):
     """
     Generates Extracted Embedded Credentials.
-    Args: 
     """
-    def __init__(self) -> None:
-        self.root_dir: str = pth.cwd().parents[1] / "creddata"
-        self.cred_pth: str = self.root_dir / "data"
-        self.meta_pth: str = self.root_dir / "meta"
-        self.location = self.root_dir / "credentials"
-        self.meta_dirs = sorted(os.listdir(self.meta_pth), reverse = True)
-        self.cred_dirs = sorted(os.listdir(self.cred_pth), reverse = True)
-        self.extractor = im.import_module("extractor")
-        self.config = im.util.spec_from_file_location("config", self.file_pth / "config.py").loader.load_module()
+    def __init__(self, meta_path: str = None, cred_path: str = None) -> None:
+        super().__init__(meta_path, cred_path)
+        self.location = Path.cwd().parents[1] / "datasets/creddata/credentials"
+        self.data_paths = Path.cwd().parents[1] / "datasets/creddata/meta", Path.cwd().parents[1] / "datasets/creddata/data"
+        self.data_dirs = sorted(os.listdir(self.data_paths[0]), reverse = True), sorted(os.listdir(self.data_paths[1]), reverse = True)
 
     def binary_clstask(self) -> typing.Text:
-        for meta_dir, cred_dir in zip(self.meta_dirs, self.cred_dirs):
-            extract_observations = self.extractor.ObservationExtractor(self.meta_path + meta_dir, self.cred_path + cred_dir)
-            extract_observations.write(self.location + self.config.Config().credentials + ".txt", extract_observations.groundtruth_bin(self.config.Config().positive))
-            extract_observations.write(self.location + self.config.Config().non_credentials + ".txt", extract_observations.groundtruth_bin(self.config.Config().negative))
+        meta_path, cred_path = self.data_paths
+        meta_dirs, cred_dirs = self.data_dirs 
+        for meta_dir, cred_dir in zip(meta_dirs, cred_dirs):
+            CE = CredentialExtractor(meta_path / meta_dir, cred_path / cred_dir)
+            CE.write(self.location / self.config.credentials, CE.groundtruth_bin(self.config.positive))
+            CE.write(self.location / self.config.non_credentials, CE.groundtruth_bin(self.config.negative))
 
     def multivariate_clstask(self) -> typing.Text:
+        meta_path, cred_path = self.data_paths
+        meta_dirs, cred_dirs = self.data_dirs 
         for filename, category in zip(self.config.category.keys(), self.config.category.values()):
-            for meta_dir, cred_dir in zip(self.meta_dirs, self.cred_dirs):
-                extract_observations = self.extractor.ObservationExtractor(self.meta_path + meta_dir, self.cred_path + cred_dir)
-                extract_observations.write(self.location + filename + ".txt", extract_observations.groundtruth_mult(self.config.positive, category))
-    
-#     def get_bin(self): 
-#         return (
-#             ut.process_message("Generating BIN Credentials..."),
-#                 self.binary_clstask(), 
-#             ut.process_message("BIN Generation Complete!")
-#         )
-    
-#     def get_mult(self):
-#         return (
-#             ut.process_message("Generating MULT Credentials..."),
-#                 self.multivariate_clstask(), 
-#             ut.process_message("MULT Generation Complete!")
-#         )
+            for meta_dir, cred_dir in zip(meta_dirs, cred_dirs):
+                CE = CredentialExtractor(meta_path / meta_dir, cred_path / cred_dir)
+                CE.write(self.location / f"{filename}.txt", CE.groundtruth_mult(self.config.positive, category))
 
-#     def get_default(self):
-#         return (
-#             ut.process_message("Generating BIN & MULT Credentials..."),
-#                 self.get_bin(),
-#                 self.get_mult(),
-#             ut.process_message("BIN & MULT Generation Complete!")
-#         )
+    def _get_mct(self):
+        return (
+            self.utils.process_message("Generating credentials for MCT..."),
+            self.multivariate_clstask(), 
+            self.utils.process_message("Generation Complete!")
+        )
 
-# if __name__ == "__main__":
-#     parser = argparse.ArgumentParser(description = "Generates Embedded Credentials' Observations for Binary & Multivariate Classification Tasks")
-#     parser.add_argument("task", type = str, help = "Enter classification (bin or mult) task")
-#     args = parser.parse_args()
-#     gen = Generator()
-#     if re.match(args.task, "bin", re.IGNORECASE): 
-#         gen.get_bin()
-#     elif re.match(args.task, "mult", re.IGNORECASE): 
-#         gen.get_mult() 
-#     else: 
-#         gen.get_default()
+    def _get_bct(self): 
+        return (
+            self.utils.process_message("Generating credentials for BCT..."),
+            self.binary_clstask(), 
+            self.utils.process_message("Generation Complete!")
+        )
 
+    def _get_mct_bct(self):
+        return (
+            self.utils.process_message("Generating credentials for MCT & BCT..."),
+            self._get_mct(),
+            self._get_bct(),
+            self.utils.process_message("Generation Complete!")
+        )
 
-Generator()
+if __name__ == "__main__":
+    gen = Generator()
+    parser = argparse.ArgumentParser(description = "Generates Observations for Multivariate & Binary Classification Tasks")
+    parser.add_argument("--task", type = str, help = "Enter classification (mct or bct) task")
+    args = parser.parse_args()
+    if re.match(args.task, "mct",  re.IGNORECASE): 
+        gen._get_mct()
+    elif re.match(args.task, "bct", re.IGNORECASE): 
+        gen._get_bct()
+    elif re.match(args.task, "mbct", re.IGNORECASE): 
+        gen._get_mct_bct()

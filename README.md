@@ -2,7 +2,7 @@
 
 <p align="center"> <img src="..doc/cade.svg" width="98%"> </p>
 
-Official implementation of CADE to undergo review at ACM DTRAP. For reviewer(s), please follow the instructions below to reproduce the results presented in the paper. 
+Official implementation of CADE to undergo review. For reviewer(s), please follow the instructions below to reproduce the results presented in the paper. 
 
 ## Abstract
 > Software developers frequently embed textual credentials (e.g., passwords, generic secrets, private keys and generic tokens) in software repositories even though it is strictly advised against due to the severe threat to the security of the software. These credentials create attack surfaces exploitable by a potential adversary to conduct malicious exploits such as backdoor attacks. Hence, the requirement for accurate detection mechanisms. Existing approaches fall into pattern-based and machine learning (ML)-enabled categories. Pattern-based methods include the design of regular expressions to detect these credentials. Albeit this method has been proven successful in detecting credentials with well-established patterns, they also incur a significant performance overhead with the growth in rules and search space. ML-enabled methods were employed to tackle the aforementioned drawback. Given that ML models can only compute with numerical observations, recent detection efforts utilize word embedding models such as GloVe to vectorize textual credentials before passed to classifiers for predictions. However, these models are unable to discriminate between embeddings that might be semantically close but contextually distant in vector space. Consequently, resulting in high false positive and negative prediction rates. 
@@ -15,27 +15,27 @@ Artifact Author: Chidera Biringa
 
 ## Datasets (D)
 ### D <sub>1</sub> : CREDDATA (In-Distribution Training, Validation & Testing) 
-CREDDATA is a benchmark credential dataset that comprises eight embedded credential categories: password (30.44%), generic secret (23.04%), private key (19.64%), generic token (21.65%), predefined pattern (7.14%), (authentication key & token (1.46%)), (seed, salt & nonce (0.85%)), and other(8.16%)}. 4,583 is the total number of positive observations with ground-truth labeled {T, F}, where "T" indicates a positive class (an embedded credential), and "F" indicate a negative class (inverse of T). Please visit [CREDDATA REPOSITORY](https://github.com/Samsung/CredData) for more information.
+CREDDATA is a benchmark credential dataset comprising eight embedded credential categories written in at least 12 languages. Credentials include password (30.44%), generic secret (23.04%), private key (19.64%), generic token (21.65%), predefined pattern (7.14%), (authentication key & token (1.46%)), (seed, salt & nonce (0.85%)), and other(8.16%). The total number of positive observations is 4,583 with ground-truth labeled {T, F}, where "T" denotes a positive class (an embedded credential), and "F" is a negative class (inverse of T). Please visit [CREDDATA REPOSITORY](https://github.com/Samsung/CredData) for more information.
 
 #### Extracting Embedded Credentials
 Unzip repository directories and corresponding metadata
 ```
 $ cd datasets/creddata
 $ for f in *.gz; do tar xf "$f"; done 
-$ cd ...; cade/preproc
+$ cd ...; cade/preprocessor
 ```
 #### Generating Observations
 
-First, verify **credential** directory exists, create one if negative &  backtrack to **prepocessor**
+First, verify **credential** directory exists, create one if negative &  backtrack to **preprocessor**
 ```
- $ cd ...; datasets/creddata
- $ if [ ! -d credentials/ ]; then mkdir credentials; else echo "exists!"; fi
- $ cd ...; cade/prepocessor
+$ cd ...; datasets/creddata
+$ if [ ! -d credentials/ ]; then mkdir credentials; else echo "exists"; fi
+$ cd ...; cade/preprocessor
 ```
 
 Multivariate Classification Task (MCT)
 ``` 
-$ python generator.py mult
+$ python3 generator.py --task=mct
 ```
 MCT Directory
 ```
@@ -46,7 +46,7 @@ CADE -> datasets -> creddata -> credentials
 
 Binary Classification Task (BCT)
 ```
-$ python generator.py bin
+$ python3 generator.py --task=bct
 ```
 >Note: BCT generation takes ~2 minutes to complete. This is because negative observations (non_credentials) are north of 42K.
 
@@ -58,8 +58,9 @@ CADE -> datasets -> creddata -> credentials
 
 Default (MCT & BCT)
 ```
-$ python generator.py
+$ python3 generator.py --task=mbct
 ```
+
 ### D<sub>2</sub> : Case Studies (Out-of-Distribution Detection (OOD))
 In the case studies directory ```(CADE -> datasets -> casestudies)```, we have five vulnerable software repository directories ```(CADE -> datasets -> casestudies -> [cryptomg, mcir, wackopicko, gruyere, wrongsecrets])```, data ```(CADE -> datasets -> data)```, and credsweeper ```(CADE -> datasets -> credsweeper)``` directories. We use the aforementioned repositories to evaluate the out-of-distribution predictive performance of our models.
 
@@ -85,4 +86,4 @@ Credsweeper ```(CADE -> datasets -> credsweeper)``` contains:
      <li> {category}.json: independent embedded credential observations found via automated analysis using CredSweeper independent of software repositories </li>
 </ul>
 
-**MORE TODO**
+**TODO**
