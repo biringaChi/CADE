@@ -14,8 +14,8 @@ Artifact Author: Chidera Biringa
 <hr>
 
 ## Datasets (D)
-### D <sub>1</sub> : CREDDATA (In-Distribution Training, Validation & Testing) 
-CREDDATA is a benchmark credential dataset comprising eight embedded credential categories written in at least 12 languages. Credentials include password (30.44%), generic secret (23.04%), private key (19.64%), generic token (21.65%), predefined pattern (7.14%), (authentication key & token (1.46%)), (seed, salt & nonce (0.85%)), and other(8.16%). The total number of positive observations is 4,583 with ground-truth labeled {T, F}, where "T" denotes a positive class (an embedded credential), and "F" is a negative class (inverse of T). Please visit [CREDDATA REPOSITORY](https://github.com/Samsung/CredData) for more information.
+### D <sub>1</sub> : CREDDATA (In-Distribution (ID)) 
+CREDDATA is a benchmark credential dataset comprising eight embedded credential categories written in at least 12 languages (Java). Credentials include password (30.44%), generic secret (23.04%), private key (19.64%), generic token (21.65%), predefined pattern (7.14%), (authentication key & token (1.46%)), (seed, salt & nonce (0.85%)), and other(8.16%). The total number of positive observations is 4,583 with ground-truth labeled {T, F}, where "T" denotes a positive class (an embedded credential), and "F" is a negative class (inverse of T). Please visit [CREDDATA REPOSITORY](https://github.com/Samsung/CredData) for more information.
 
 #### Extracting Embedded Credentials
 Unzip repository directories and corresponding metadata

@@ -10,17 +10,9 @@ class CredentialExtractor:
 	Arg: Path to Embedded Credential & Corresponding Metadata Directories
 	"""
 	def __init__(self, meta_path: str = None, cred_path: str = None) -> None:
-		self.meta_path = meta_path
-		self.cred_path = cred_path
-		self.file_pth: str = Path.cwd().parents[0] / "helper"
-		self.utils = im.util.spec_from_file_location("utils", self.file_pth / "utils.py").loader.load_module().Utils
-		self.config = im.util.spec_from_file_location("config", self.file_pth / "config.py").loader.load_module().Config()
-		
-	def __str__(self) -> str:
-		return self.__class__.__name__
-
-	def __repr__(self) -> str:
-		return self.__str__()
+		self.im_mod = im.util.spec_from_file_location("primps", Path.cwd().parents[0]/"primps.py")
+		self.meta_path, self.cred_path  = meta_path, cred_path
+		self.utils, self.config = self.im_mod.loader.load_module().import_helper_modules()
 	
 	def metadata(self) -> pandas.DataFrame:
 		try:
@@ -38,6 +30,10 @@ class CredentialExtractor:
 	def groundtruth_mult(self, groundtruth: typing.List[str], category: typing.List[str]) -> typing.Tuple[typing.List]: 
 		meta = self.metadata().loc[self.metadata()[self.config.gt].isin(groundtruth)]
 		meta = self.metadata().loc[self.metadata()[self.config.cat].isin(category)]
+		return [fp for fp in meta[self.config.fp]], [int(lidx) for lidx in meta[self.config.lsle]]
+
+	def groundtruth(self, groundtruth: typing.List[str], category: typing.List[str]) -> typing.Tuple[typing.List]: 
+		meta = self.metadata().loc[(self.metadata()[self.config.gt].isin(groundtruth)) & (self.metadata()[self.config.cat].isin(category))]
 		return [fp for fp in meta[self.config.fp]], [int(lidx) for lidx in meta[self.config.lsle]]
 
 	def extract(self, data: typing.List[str]) -> typing.Set[str]:
@@ -60,9 +56,9 @@ class CredentialExtractor:
 						for idx in vals:
 							instance = self.utils.reader(root, file)[idx]
 							out.append(instance[:-1].strip())
-		return set(out)
+		return set(list(out))
 
-	def write(self, path: str, data: typing.List[str]):
+	def write(self, path: str, data: typing.List[str]): 
 		operator = "a" if os.path.exists(path) else "w"
 		with open(path, operator) as f:
-			f.write("\n".join(self.extract(data)) + "\n")
+			f.write("\n".join(self.extract(data)) + "\n" )

@@ -20,8 +20,14 @@ class Generator(CredentialExtractor):
         meta_dirs, cred_dirs = self.data_dirs 
         for meta_dir, cred_dir in zip(meta_dirs, cred_dirs):
             CE = CredentialExtractor(meta_path / meta_dir, cred_path / cred_dir)
-            CE.write(self.location / self.config.credentials, CE.groundtruth_bin(self.config.positive))
-            CE.write(self.location / self.config.non_credentials, CE.groundtruth_bin(self.config.negative))
+            CE.write(
+                self.location / self.config.credentials, 
+                CE.groundtruth_bin(self.config.positive)
+                )
+            CE.write(
+                self.location / self.config.non_credentials, 
+                CE.groundtruth_bin(self.config.negative)
+                )
 
     def multivariate_clstask(self) -> typing.Text:
         meta_path, cred_path = self.data_paths
@@ -29,7 +35,10 @@ class Generator(CredentialExtractor):
         for filename, category in zip(self.config.category.keys(), self.config.category.values()):
             for meta_dir, cred_dir in zip(meta_dirs, cred_dirs):
                 CE = CredentialExtractor(meta_path / meta_dir, cred_path / cred_dir)
-                CE.write(self.location / f"{filename}.txt", CE.groundtruth_mult(self.config.positive, category))
+                CE.write(
+                    self.location / f"{filename}.txt",
+                    CE.groundtruth_mult(self.config.positive, category)
+                    )
 
     def _get_mct(self):
         return (
@@ -64,3 +73,4 @@ if __name__ == "__main__":
         gen._get_bct()
     elif re.match(args.task, "mbct", re.IGNORECASE): 
         gen._get_mct_bct()
+        
