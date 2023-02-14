@@ -32,7 +32,7 @@ class Generator:
             extractor.utils.write_to_file(
                 self.location / extractor.config.non_credentials, negative
             )
-    
+            
     def multivariate_clstask(self) -> typing.Text:
         meta_path, cred_path = self.data_paths
         meta_dirs, cred_dirs = self.data_dirs

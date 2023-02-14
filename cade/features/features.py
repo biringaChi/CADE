@@ -13,3 +13,6 @@ class Features:
 			use_cuda = False
 		)
 		return repr_model().encode_sentences(data, combine_strategy, batch_size)
+	
+	def get_features(self):
+		pass
