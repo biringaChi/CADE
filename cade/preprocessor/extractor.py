@@ -10,8 +10,8 @@ class CredentialExtractor:
 	Arg: Path to Embedded Credential & Corresponding Metadata Directories
 	"""
 	def __init__(self, meta_path: str = None, cred_path: str = None) -> None:
-		self.im_mod = im.util.spec_from_file_location("primps", Path.cwd().parents[0]/"primps.py")
 		self.meta_path, self.cred_path  = meta_path, cred_path
+		self.im_mod = im.util.spec_from_file_location("primps", Path.cwd().parents[0]/"primps.py")
 		self.utils, self.config = self.im_mod.loader.load_module().import_helper_modules()
 	
 	def metadata(self) -> pandas.DataFrame:
@@ -32,13 +32,9 @@ class CredentialExtractor:
 		meta = self.metadata().loc[self.metadata()[self.config.cat].isin(category)]
 		return [fp for fp in meta[self.config.fp]], [int(lidx) for lidx in meta[self.config.lsle]]
 
-	def groundtruth(self, groundtruth: typing.List[str], category: typing.List[str]) -> typing.Tuple[typing.List]: 
-		meta = self.metadata().loc[(self.metadata()[self.config.gt].isin(groundtruth)) & (self.metadata()[self.config.cat].isin(category))]
-		return [fp for fp in meta[self.config.fp]], [int(lidx) for lidx in meta[self.config.lsle]]
-
 	def extract(self, data: typing.List[str]) -> typing.Set[str]:
 		temp: typing.Dict = {} 
-		out: typing.List = []
+		credentials: typing.List = []
 		filepath, lineidx = data
 		for fp, lidx in zip(filepath, lineidx):
 			if fp in temp:
@@ -51,14 +47,10 @@ class CredentialExtractor:
 					vals = temp[file]
 					if self.utils.__len__(vals) == 1:
 						instance = self.utils.reader(root, file)[vals[0]]
-						out.append(instance[:-1].strip())
+						credentials.append(instance[:-1].strip())
 					else:
 						for idx in vals:
 							instance = self.utils.reader(root, file)[idx]
-							out.append(instance[:-1].strip())
-		return set(list(out))
-
-	def write(self, path: str, data: typing.List[str]): 
-		operator = "a" if os.path.exists(path) else "w"
-		with open(path, operator) as f:
-			f.write("\n".join(self.extract(data)) + "\n" )
+							credentials.append(instance[:-1].strip())
+							
+		return set(credentials)

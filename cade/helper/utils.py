@@ -52,7 +52,16 @@ class Utils:
 				return json.load(default), json.load(ml)
 		except FileNotFoundError as e:
 			raise(e)
-	
+
+	@classmethod
+	def write_to_file(self, path: str, data: typing.List[str]): 
+		operator = "a" if os.path.exists(path) else "w"
+		try:
+			with open(path, operator) as f:
+				f.write("\n".join(data) + "\n" )
+		except FileExistsError as e:
+			raise(e)
+
 	@classmethod
 	def process_message(self, msg: str):
 		print("Process:::"+ msg)
