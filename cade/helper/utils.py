@@ -3,6 +3,7 @@ from __future__ import with_statement, print_function
 import re
 import os
 import json
+import pathlib
 import pickle
 import typing
 
@@ -65,3 +66,15 @@ class Utils:
 	@classmethod
 	def process_message(self, msg: str):
 		print("Process:::"+ msg)
+
+	@classmethod
+	def navigator(self, idx: int = 1):
+		return {
+		"core" : pathlib.Path.cwd(),
+		"subcore" : pathlib.Path.cwd().parents[idx],
+		"meta_path" : pathlib.Path.cwd().parents[idx]/"datasets/creddata/meta", 
+		"cred_path" : pathlib.Path.cwd().parents[idx]/"datasets/creddata/data", 
+		"credentials" : pathlib.Path.cwd().parents[idx]/"datasets/creddata/credentials",
+		"meta_dirs" : sorted(os.listdir(pathlib.Path.cwd().parents[idx]/"datasets/creddata/meta"), reverse = True),
+		"cred_dirs" : sorted(os.listdir(pathlib.Path.cwd().parents[idx]/"datasets/creddata/data"), reverse = True)
+		}

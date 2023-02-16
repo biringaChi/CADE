@@ -11,9 +11,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 
-# standardize imports for all dirs
-
-
 class MLP:
 	pass
 
