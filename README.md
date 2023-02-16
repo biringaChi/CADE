@@ -26,7 +26,7 @@ $ cd ...; cade/preprocessor
 ```
 #### Generating Observations
 
-First, verify **credential** directory exists, create one if negative &  backtrack to **preprocessor**
+First, verify ```credential``` directory exists, create one if negative &  backtrack to ```preprocessor```
 ```
 $ cd ...; datasets/creddata
 $ if [ ! -d credentials/ ]; then mkdir credentials; else echo "exists"; fi
