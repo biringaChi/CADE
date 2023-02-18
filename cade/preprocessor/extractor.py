@@ -14,7 +14,7 @@ class CredentialExtractor:
 		self.helper = importlib.util.spec_from_file_location("primps", pathlib.Path.cwd().parents[0]/"primps.py")
 		self.utils, self.config = self.helper.loader.load_module().import_helper_modules()
 	
-	def _metadata(self) -> pandas.DataFrame:
+	def metadata(self) -> pandas.DataFrame:
 		try:
 			meta: pandas.DataFrame = pandas.read_csv(self.meta_path)
 		except FileNotFoundError as e:

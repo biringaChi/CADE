@@ -18,6 +18,14 @@ class Config:
 		self.gt: str = self.metadata["gt"]
 		self.cat: str = self.metadata["cat"]
 
+		self.p_password: str = self.metadata["password"]
+		self.g_generic_secret: str = self.metadata["generic_secret"]
+		self.p_private_key: str = self.metadata["private_key"]
+		self.p_predefined_pattern: str = self.metadata["predefined_pattern"]
+		self.s_seed_salt_nonce: str = self.metadata["seed_salt_nonce"]
+		self.g_generic_token: str = self.metadata["generic_token"]
+		self.a_auth_key_token: str = self.metadata["auth_key_token"]
+		self.o_other: str = self.metadata["other"]
 		self.credentials: str = self.metadata["credentials"]
 		self.non_credentials: str = self.metadata["non_credentials"]
 

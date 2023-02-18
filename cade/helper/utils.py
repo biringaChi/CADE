@@ -72,9 +72,9 @@ class Utils:
 		return {
 		"core" : pathlib.Path.cwd(),
 		"subcore" : pathlib.Path.cwd().parents[idx],
-		"meta_path" : pathlib.Path.cwd().parents[idx]/"datasets/creddata/meta", 
+		"meta_path" : pathlib.Path.cwd().parents[idx] /"datasets/creddata/meta", 
 		"cred_path" : pathlib.Path.cwd().parents[idx]/"datasets/creddata/data", 
 		"credentials" : pathlib.Path.cwd().parents[idx]/"datasets/creddata/credentials",
 		"meta_dirs" : sorted(os.listdir(pathlib.Path.cwd().parents[idx]/"datasets/creddata/meta"), reverse = True),
-		"cred_dirs" : sorted(os.listdir(pathlib.Path.cwd().parents[idx]/"datasets/creddata/data"), reverse = True)
+		"cred_dirs" : sorted(os.listdir(pathlib.Path.cwd().parents[idx]/"datasets/creddata/data"), reverse = True),
 		}

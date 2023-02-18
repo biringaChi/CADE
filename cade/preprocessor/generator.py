@@ -3,15 +3,20 @@ import typing
 import argparse
 from extractor import CredentialExtractor
 
+parser = argparse.ArgumentParser(description = "Generates Observations for Multivariate & Binary Classification Tasks")
+parser.add_argument("--task", type = str, help = "Enter classification (mct or bct) task")
+args = parser.parse_args()
+
 class Generator:
     """
     Generates Extracted Embedded Credentials.
     """
     def __init__(self, meta_path: str = None, cred_path: str = None) -> None:
         self.ce = CredentialExtractor()
-        self.location = self.ce.utils.navigator()["credentials"]
-        self.meta_path, self.cred_path = self.ce.utils.navigator()["meta_path"], self.ce.utils.navigator()["cred_path"]
-        self.meta_dirs, self.cred_dirs = self.ce.utils.navigator()["meta_dirs"], self.ce.utils.navigator()["cred_dirs"]
+        self.navigator = self.ce.utils.navigator()
+        self.location = self.navigator["credentials"]
+        self.meta_path, self.cred_path = self.navigator["meta_path"], self.navigator["cred_path"]
+        self.meta_dirs, self.cred_dirs = self.navigator["meta_dirs"], self.navigator["cred_dirs"]
 
     def binary_clstask(self) -> typing.Text:
         for meta_dir, cred_dir in zip(self.meta_dirs, self.cred_dirs):
@@ -64,9 +69,6 @@ class Generator:
 
 if __name__ == "__main__":
     gen = Generator()
-    parser = argparse.ArgumentParser(description = "Generates Observations for Multivariate & Binary Classification Tasks")
-    parser.add_argument("--task", type = str, help = "Enter classification (mct or bct) task")
-    args = parser.parse_args()
     if re.match(args.task, "mct",  re.IGNORECASE): 
         gen._get_mct()
     elif re.match(args.task, "bct", re.IGNORECASE): 

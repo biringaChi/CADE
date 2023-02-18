@@ -1,24 +1,87 @@
-from __future__ import division, annotations
-
-import importlib as im
-from pathlib import Path
-from simpletransformers.config.model_args import ModelArgs
+import re
+import typing
+import pathlib
+import argparse
+import importlib
 from simpletransformers.language_representation import RepresentationModel
 
-class FeatureExtraction:
+parser = argparse.ArgumentParser(description = "Generates Contextual Features")
+parser.add_argument("--cred", type = str, help = "Enter credential category")
+
+args = parser.parse_args()
+
+class ContextualFeatures:
+	"""
+	Contextual Feature Generator. 
+	"""
 	def __init__(self) -> None:
-		self.im_mod = im.util.spec_from_file_location("primps", Path.cwd().parents[0]/"primps.py")
+		self.im_mod = importlib.util.spec_from_file_location(
+			"primps", pathlib.Path.cwd().parents[0]/"primps.py")
 		self.utils, self.config = self.im_mod.loader.load_module().import_helper_modules()
+		self.navigator = self.utils.navigator()["credentials"]
 	
-	def __getitem__():
-		# TODO
-		pass 
+	def password(self) -> typing.Text:
+		return self.utils.reader(self.navigator, self.config.p_password)
 
-	def fine_tune(self, model_type: str, model_name: str, length: int):
-		return RepresentationModel(
-			model_type = model_type, model_name = model_name,
-			args = ModelArgs(max_seq_length = length), use_cuda = False
+	def generic_secret(self) -> typing.Text:
+		return self.utils.reader(self.navigator, self.config.g_generic_secret)
+
+	def private_key(self) -> typing.Text:
+		return self.utils.reader(self.navigator, self.config.p_private_key)
+
+	def predefined_pattern(self) -> typing.Text:
+		return self.utils.reader(self.navigator, self.config.p_predefined_pattern)
+
+	def seed_salt_nonce(self) -> typing.Text:
+		return self.utils.reader(self.navigator, self.config.s_seed_salt_nonce)
+
+	def generic_token(self) -> typing.Text:
+		return self.utils.reader(self.navigator, self.config.g_generic_token)
+
+	def auth_key_token(self) -> typing.Text:
+		return self.utils.reader(self.navigator, self.config.a_auth_key_token)
+	
+	def other(self) -> typing.Text:
+		return self.utils.reader(self.navigator, self.config.o_other)
+	
+	def credential(self) -> typing.Text:
+		return self.utils.reader(self.navigator, self.config.credentials)
+	
+	def non_credentials(self) -> typing.Text: 
+		return self.utils.reader(self.navigator, self.config.non_credentials)
+	
+	def write_to_object(self, data):
+		pass
+	
+	@property
+	def get_credentials(self) -> typing.Dict:
+		return {
+			self.password.__name__ : self.password(), 
+			self.generic_secret.__name__ : self.generic_secret(),
+			self.private_key.__name__ : self.private_key(),
+			self.predefined_pattern.__name__ : self.predefined_pattern(),
+			self.seed_salt_nonce.__name__ : self.seed_salt_nonce(),
+			self.generic_token.__name__ : self.generic_token(),
+			self.auth_key_token.__name__ : self.auth_key_token(),
+			self.other.__name__ : self.other()
+		}
+	
+	def __getitem__(self, credential):
+		return self.get_credentials[credential]
+
+	def _fine_tune(self,
+		data, 
+		batch_size,
+		model_type = None,
+		model_name = None,
+		combine_strategy = None
+		) -> None:
+		model = RepresentationModel(
+			model_type = self.config.model_type,
+			model_name = self.config.model_name, 
+			use_cuda = False
 		)
+		return model.encode_sentences(data, batch_size)
 
-	def model(self, data, combine_strategy, batch_size, model_type, model_name, length):
-		return self.fine_tune(model_type, model_name, length).encode_sentences(data, combine_strategy, batch_size)
+if __name__ == "__main__":
+	CF = ContextualFeatures()
