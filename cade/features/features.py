@@ -94,6 +94,5 @@ if __name__ == "__main__":
 	CE = ContextualEmbeddings()
 	credential = CE[args.cred]
 	CE.logger._info("Fine-tuning begins")
-	features = CE._fine_tune(credential, CE.utils.__len__(credential)) 
-	CE.utils.pickle(features, CE.location / args.cred.__repr__().strip("'"))
+	CE.utils.pickle(CE._fine_tune(credential, CE.utils.__len__(credential)) , CE.location / args.cred.__repr__().strip("'"))
 	CE.logger._info("Fine-tuning concludes")

@@ -89,14 +89,14 @@ CredSweeper ```(CADE -> datasets -> credsweeper)``` contains:
 
 
 ## Contextual Embedding Features
-We fine-tune the BERT's base model for contextual feature extraction. First, verify credential files exists, and proceed if positive. Otherwise, return to the previous step & generate the aforementioned credentials.
-> Note: We store generated contextual features in a pickle object located in the ```CADE -> dataobjects``` directory.
+We fine-tune the BERT's base model for contextual feature extraction. First, verify credential files exists, & proceed if positive. Otherwise, return to the previous step & generate the aforementioned credentials.
+> Note: We store generated contextual embedding features in a pickle object located in the ```CADE -> dataobjects``` directory.
 
 Verification (from ```features``` directory)
 ```
 $ cd ...; datasets/creddata/credentials
 $ if [ -f password.txt ] && [ -f auth_key_token.txt ] && [ -f generic_secret.txt ] && [ -f predefined_pattern.txt ] && [ -f generic_token.txt ] && [ -f private_key.txt ]  && [ -f seed_salt_nonce.txt ] && [ -f other.txt ]; then echo "positive"; else echo "negative"; fi
-$ cd ....;cade/features 
+$ cd ....; cade/features 
 ```
 
 Extracting Features for MCT (Enter/Specify Credential Category)
@@ -108,3 +108,17 @@ Extracting Features for BCT
 ```
 python3 features.py -c={credentials, non_credentials}
 ```
+
+Fine-tuning BERT results in dynamically truncated and padded observation lengths (I encourage you to read the [BERT Paper](https://arxiv.org/pdf/1810.04805.pdf) for an in-depth and technical explanation). While this is sufficient in end-to-end DL tasks, it doesn't suffice here. Convolutional Neural Networks (CNN) or Random Forest (RF) classification models don't like input embeddings with varying sizes (emb<sub>{0}</sub>, emb<sub>{0 + 1}</sub> ... emb<sub>{n - 1}</sub> where max lengths $\epsilon$ {10, 20 ... 30}). Hence, post-feature generation, we use the ```manipulator```  module to truncate and zero pad observations to tackle the abovestated drawback.
+
+Truncate
+```
+TODO
+```
+
+Pad
+```
+TODO
+```
+
+<!-- Futhermore, the ```manipulator``` moduke is indifferent to -->
