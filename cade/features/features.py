@@ -1,23 +1,28 @@
-import re
 import typing
 import pathlib
 import argparse
 import importlib
 from simpletransformers.language_representation import RepresentationModel
 
-parser = argparse.ArgumentParser(description = "Generates Contextual Features")
-parser.add_argument("--cred", type = str, help = "Enter credential category")
-
+parser = argparse.ArgumentParser(description = "Generates Contextual Embedding Features")
+parser.add_argument(
+	"-c", 
+	"--cred", 
+	type = str, 
+	metavar = "", 
+	required = True, 
+	help = "Enter credential category"
+	)
 args = parser.parse_args()
 
-class ContextualFeatures:
+class ContextualEmbeddings:
 	"""
 	Contextual Feature Generator. 
 	"""
 	def __init__(self) -> None:
 		self.im_mod = importlib.util.spec_from_file_location(
 			"primps", pathlib.Path.cwd().parents[0]/"primps.py")
-		self.utils, self.config = self.im_mod.loader.load_module().import_helper_modules()
+		self.utils, self.config, self.logger = self.im_mod.loader.load_module().import_helper_modules()
 		self.navigator = self.utils.navigator()["credentials"]
 	
 	def password(self) -> typing.Text:
@@ -84,4 +89,8 @@ class ContextualFeatures:
 		return model.encode_sentences(data, batch_size)
 
 if __name__ == "__main__":
-	CF = ContextualFeatures()
+	CE = ContextualEmbeddings()
+	credential = CE[args.cred]
+	CE.logger._info("Fine-tuning begins")
+	CE._fine_tune(credential, CE.utils.__len__(credential)) 
+	CE.logger._info("Fine-tuning concludes")

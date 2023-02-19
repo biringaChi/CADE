@@ -64,10 +64,6 @@ class Utils:
 			raise(e)
 
 	@classmethod
-	def process_message(self, msg: str):
-		print("Process:::"+ msg)
-
-	@classmethod
 	def navigator(self, idx: int = 1):
 		return {
 		"core" : pathlib.Path.cwd(),

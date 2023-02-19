@@ -12,7 +12,7 @@ class CredentialExtractor:
 	def __init__(self, meta_path: str = None, cred_path: str = None) -> None:
 		self.meta_path, self.cred_path  = meta_path, cred_path
 		self.helper = importlib.util.spec_from_file_location("primps", pathlib.Path.cwd().parents[0]/"primps.py")
-		self.utils, self.config = self.helper.loader.load_module().import_helper_modules()
+		self.utils, self.config, self.logger = self.helper.loader.load_module().import_helper_modules()
 	
 	def metadata(self) -> pandas.DataFrame:
 		try:

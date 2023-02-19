@@ -36,6 +36,7 @@ $ cd ...; cade/preprocessor
 Multivariate Classification Task (MCT)
 ``` 
 $ python3 generator.py --task=mct
+$ python3 generator.py -t=mct # Shorthand Notation
 ```
 MCT Directory
 ```
@@ -47,10 +48,11 @@ CADE -> datasets -> creddata -> credentials
 Binary Classification Task (BCT)
 ```
 $ python3 generator.py --task=bct
+$ python3 generator.py -t=bct # Shorthand Notation
 ```
 >Note: BCT generation takes ~2 minutes to complete. This is because negative observations (non_credentials) are north of 42K.
 
-BCT Directory
+BCT Directory 
 ```
 CADE -> datasets -> creddata -> credentials 
      -> [credentials, non_credentials {.txt}]
@@ -59,6 +61,7 @@ CADE -> datasets -> creddata -> credentials
 Default (MCT & BCT)
 ```
 $ python3 generator.py --task=mbct
+$ python3 generator.py -t=mbct # Shorthand Notation
 ```
 
 ### D<sub>2</sub> : Case Studies (Out-of-Distribution Detection (OOD))
@@ -86,4 +89,21 @@ Credsweeper ```(CADE -> datasets -> credsweeper)``` contains:
      <li> {category}.json: independent embedded credential observations found via automated analysis using CredSweeper independent of software repositories </li>
 </ul>
 
-**TODO**
+
+## Contextual Features
+We fine-tune the BERT's base model for contextual feature extraction. First, verify credential files exists, and proceed if positive. Otherwise, return to the previous step & generate the aforementioned credentials.
+
+Verification
+```
+TODO
+```
+
+Extracting Features for MCT (Enter/Specify Credential Category)
+```
+python3 features.py -c={password, generic_secret, private_key, predefined_pattern, seed_salt_nonce, generic_token, auth_key_token, other}
+```
+
+Extracting Features for BCT (Enter/Specify Credential Category)
+```
+python3 features.py -c={credentials, non_credentials}
+```
