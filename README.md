@@ -35,33 +35,31 @@ $ cd ...; cade/preprocessor
 
 Multivariate Classification Task (MCT)
 ``` 
-$ python3 generator.py --task=mct
 $ python3 generator.py -t=mct # Shorthand Notation
+$ python3 generator.py --task=mct
 ```
 MCT Directory
 ```
-CADE -> datasets -> creddata -> credentials 
-     -> [password, generic_secret, generic_token, predefined_pattern, 
-         auth_key_token, seed_salt_nonce, other {.txt}]
+CADE -> datasets -> creddata -> credentials -> [password, generic_secret, generic_token, predefined_pattern, 
+auth_key_token, seed_salt_nonce, other {.txt}]
 ```
 
 Binary Classification Task (BCT)
 ```
+$ python3 generator.py -t=bct
 $ python3 generator.py --task=bct
-$ python3 generator.py -t=bct # Shorthand Notation
 ```
 >Note: BCT generation takes ~2 minutes to complete. This is because negative observations (non_credentials) are north of 42K.
 
 BCT Directory 
 ```
-CADE -> datasets -> creddata -> credentials 
-     -> [credentials, non_credentials {.txt}]
+CADE -> datasets -> creddata -> credentials -> [credentials, non_credentials {.txt}]
 ```
 
 Default (MCT & BCT)
 ```
+$ python3 generator.py -t=mbct
 $ python3 generator.py --task=mbct
-$ python3 generator.py -t=mbct # Shorthand Notation
 ```
 
 ### D<sub>2</sub> : Case Studies (Out-of-Distribution Detection (OOD))
@@ -84,18 +82,21 @@ Benign & Credential contains:
      <li> {benign} & {category}.txt: all observations in specified categories found via manual analysis independent of the software repository </li>
 </ul>
 
-Credsweeper ```(CADE -> datasets -> credsweeper)``` contains: 
+CredSweeper ```(CADE -> datasets -> credsweeper)``` contains: 
 <ul>
      <li> {category}.json: independent embedded credential observations found via automated analysis using CredSweeper independent of software repositories </li>
 </ul>
 
 
-## Contextual Features
+## Contextual Embedding Features
 We fine-tune the BERT's base model for contextual feature extraction. First, verify credential files exists, and proceed if positive. Otherwise, return to the previous step & generate the aforementioned credentials.
+> Note: We store generated contextual features in a pickle object located in the ```CADE -> dataobjects``` directory.
 
-Verification
+Verification (from ```features``` directory)
 ```
-TODO
+$ cd ...; datasets/creddata/credentials
+$ if [ -f password.txt ] && [ -f auth_key_token.txt ] && [ -f generic_secret.txt ] && [ -f predefined_pattern.txt ] && [ -f generic_token.txt ] && [ -f private_key.txt ]  && [ -f seed_salt_nonce.txt ] && [ -f other.txt ]; then echo "positive"; else echo "negative"; fi
+$ cd ....;cade/features 
 ```
 
 Extracting Features for MCT (Enter/Specify Credential Category)
@@ -103,7 +104,7 @@ Extracting Features for MCT (Enter/Specify Credential Category)
 python3 features.py -c={password, generic_secret, private_key, predefined_pattern, seed_salt_nonce, generic_token, auth_key_token, other}
 ```
 
-Extracting Features for BCT (Enter/Specify Credential Category)
+Extracting Features for BCT
 ```
 python3 features.py -c={credentials, non_credentials}
 ```

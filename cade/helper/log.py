@@ -24,5 +24,3 @@ class Logger:
 	@classmethod
 	def _critical(self):
 		pass
-
-	

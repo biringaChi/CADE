@@ -1,3 +1,3 @@
 
-class Manipulator:
+class DataManipulator:
 	pass

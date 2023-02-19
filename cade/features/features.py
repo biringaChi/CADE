@@ -17,13 +17,18 @@ args = parser.parse_args()
 
 class ContextualEmbeddings:
 	"""
-	Contextual Feature Generator. 
+	Contextual Feature Embeddings Generator. 
 	"""
 	def __init__(self) -> None:
-		self.im_mod = importlib.util.spec_from_file_location(
-			"primps", pathlib.Path.cwd().parents[0]/"primps.py")
+		self.im_mod = importlib.util.spec_from_file_location("primps", pathlib.Path.cwd().parents[0]/"primps.py")
 		self.utils, self.config, self.logger = self.im_mod.loader.load_module().import_helper_modules()
-		self.navigator = self.utils.navigator()["credentials"]
+		self.navigator, self.location = self.utils.navigator()["credentials"], self.utils.navigator()["dataobjects"]
+	
+	def __str__(self) -> str:
+		return self.__class__.__name__
+	
+	def __repr__(self) -> str:
+		return self.__str__()
 	
 	def password(self) -> typing.Text:
 		return self.utils.reader(self.navigator, self.config.p_password)
@@ -54,9 +59,6 @@ class ContextualEmbeddings:
 	
 	def non_credentials(self) -> typing.Text: 
 		return self.utils.reader(self.navigator, self.config.non_credentials)
-	
-	def write_to_object(self, data):
-		pass
 	
 	@property
 	def get_credentials(self) -> typing.Dict:
@@ -92,5 +94,6 @@ if __name__ == "__main__":
 	CE = ContextualEmbeddings()
 	credential = CE[args.cred]
 	CE.logger._info("Fine-tuning begins")
-	CE._fine_tune(credential, CE.utils.__len__(credential)) 
+	features = CE._fine_tune(credential, CE.utils.__len__(credential)) 
+	CE.utils.pickle(features, CE.location / args.cred.__repr__().strip("'"))
 	CE.logger._info("Fine-tuning concludes")

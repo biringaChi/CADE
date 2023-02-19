@@ -68,6 +68,7 @@ class Utils:
 		return {
 		"core" : pathlib.Path.cwd(),
 		"subcore" : pathlib.Path.cwd().parents[idx],
+		"dataobjects" : pathlib.Path.cwd().parents[idx] / "dataobjects",
 		"meta_path" : pathlib.Path.cwd().parents[idx] /"datasets/creddata/meta", 
 		"cred_path" : pathlib.Path.cwd().parents[idx]/"datasets/creddata/data", 
 		"credentials" : pathlib.Path.cwd().parents[idx]/"datasets/creddata/credentials",
