@@ -18,6 +18,7 @@ args = parser.parse_args()
 class ContextualEmbeddings:
 	"""
 	Contextual Feature Embeddings Generator. 
+	
 	"""
 	def __init__(self) -> None:
 		self.im_mod = importlib.util.spec_from_file_location("primps", pathlib.Path.cwd().parents[0]/"primps.py")

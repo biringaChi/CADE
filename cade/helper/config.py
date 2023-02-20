@@ -7,16 +7,20 @@ class Config:
 	Configurations
 	"""
 	def __init__(self) -> None:
-		self.configs_pth: str = pth.cwd().parents[1] / "configs"
+		self.configs_pth: str = pth.cwd().parents[1]/"configs"
 		self.utils_module = im.import_module("utils")
 		self.utils = self.utils_module.Utils
-		self.default, self.ml = self.utils.config([self.configs_pth / "default.json", self.configs_pth / "ml.json"])
+		self.default, self.ml = self.utils.config([self.configs_pth/"default.json", self.configs_pth/"ml.json"])
 
 		self.metadata: typing.Dict = self.default["metadata"]
 		self.fp: str = self.metadata["fp"]
 		self.lsle: str = self.metadata["lsle"]
 		self.gt: str = self.metadata["gt"]
 		self.cat: str = self.metadata["cat"]
+
+		self.manipulator: typing.Dict = self.default["manipulator"]
+		self.max_seqlen: str = self.manipulator["max_seqlen"]
+		self.hidden_state: str = self.manipulator["hidden_state"]
 
 		self.p_password: str = self.metadata["password"]
 		self.g_generic_secret: str = self.metadata["generic_secret"]

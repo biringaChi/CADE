@@ -15,6 +15,12 @@
 		"credentials" : "credentials.txt",
 		"non_credentials" : "non_credentials.txt"
 	},
+
+	"manipulator" : {
+		"max_seqlen" : 128,
+		"hidden_state" : 768
+	},
+
 	"groundtruth" : {
 		"negative" : ["F"],
 		"positive" : ["T"],

@@ -17,6 +17,7 @@ args = parser.parse_args()
 class Generator:
     """
     Generates Extracted Embedded Credentials.
+    Arg: Classification Task
     """
     def __init__(self, meta_path: str = None, cred_path: str = None) -> None:
         self.ce = CredentialExtractor()

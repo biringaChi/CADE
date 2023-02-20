@@ -1,3 +1,34 @@
+import numpy
+import typing
+from features import ContextualEmbeddings
 
-class DataManipulator:
-	pass
+class Manipulator(ContextualEmbeddings):
+	"""
+	Handles Generated Contextual Feature Embeddings 
+	"""
+	def __init__(self) -> None:
+		super().__init__()
+	
+	def truncate(self, features):
+		truncated_observations = []
+		for feature in features:
+			if feature > self.config.max_seqlen:
+				truncated_observations.append(feature[:self.config.max_seqlen])
+			else:
+				truncated_observations.append(feature)
+		return truncated_observations
+
+	def pad(self, features):
+		padded_observations  = []
+		for feature in features:
+			if self.utils.__len__(feature) < self.config.max_seqlen:
+				feature.extend([0.0] * (self.config.max_seqlen - self.utils.__len__(feature)))
+		for feature in features:
+			temp = []
+			for vector in feature:
+				if not type(vector).__module__ == numpy.__name__:
+					temp.append(numpy.zeros((self.config.hidden_state,), dtype = numpy.float32))
+				else: temp.append(vector)
+			padded_observations.append(temp)
+		return padded_observations
+	

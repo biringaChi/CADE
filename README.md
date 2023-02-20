@@ -47,7 +47,6 @@ auth_key_token, seed_salt_nonce, other {.txt}]
 Binary Classification Task (BCT)
 ```
 $ python3 generator.py -t=bct
-$ python3 generator.py --task=bct
 ```
 >Note: BCT generation takes ~2 minutes to complete. This is because negative observations (non_credentials) are north of 42K.
 
@@ -59,7 +58,6 @@ CADE -> datasets -> creddata -> credentials -> [credentials, non_credentials {.t
 Default (MCT & BCT)
 ```
 $ python3 generator.py -t=mbct
-$ python3 generator.py --task=mbct
 ```
 
 ### D<sub>2</sub> : Case Studies (Out-of-Distribution Detection (OOD))
@@ -90,7 +88,7 @@ CredSweeper ```(CADE -> datasets -> credsweeper)``` contains:
 
 ## Contextual Embedding Features
 We fine-tune the BERT's base model for contextual feature extraction. First, verify credential files exists, & proceed if positive. Otherwise, return to the previous step & generate the aforementioned credentials.
-> Note: We store generated contextual embedding features in a pickle object located in the ```CADE -> dataobjects``` directory.
+> Note: We store generated contextual embedding features in a pickle object located in the ```(CADE -> datasets -> dataobjects)``` directory.
 
 Verification (from ```features``` directory)
 ```
@@ -109,9 +107,11 @@ Extracting Features for BCT
 python3 features.py -c={credentials, non_credentials}
 ```
 
-Fine-tuning BERT results in dynamically truncated and padded observation lengths (I encourage you to read the [BERT Paper](https://arxiv.org/pdf/1810.04805.pdf) for an in-depth and technical explanation). While this is sufficient in end-to-end DL tasks, it doesn't suffice here. Convolutional Neural Networks (CNN) or Random Forest (RF) classification models don't like input embeddings with varying sizes (emb<sub>{0}</sub>, emb<sub>{0 + 1}</sub> ... emb<sub>{n - 1}</sub> where max lengths $\epsilon$ {10, 20 ... 30}). Hence, post-feature generation, we use the ```manipulator```  module to truncate and zero pad observations to tackle the abovestated drawback.
+Fine-tuning BERT results in dynamically truncated and padded observations that suffice in an end-to-end DL task. However, it doesn't suffice here. For example, a CNN classifier doesn't like to be feed input embeddings (e) with varying sizes (e<sub>{0}</sub>, e<sub>{0 + 1}</sub> ... e<sub>{n - 1}</sub> where max(m) lengths $\epsilon$ {m, m′ ... m′′}). Hence, in post-contextual feature generation, we use the ```manipulator``` module to truncate and pad observations accordingly. I encourage you to read the [BERT Paper](https://arxiv.org/pdf/1810.04805.pdf) for an in-depth and technical explanation.
 
-Truncate
+## Manipulator
+
+<!-- Truncate
 ```
 TODO
 ```
@@ -119,6 +119,4 @@ TODO
 Pad
 ```
 TODO
-```
-
-<!-- Futhermore, the ```manipulator``` moduke is indifferent to -->
+``` -->
