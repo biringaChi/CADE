@@ -110,9 +110,9 @@ python3 features.py -c={credentials, non_credentials}
 ## Manipulator
 Fine-tuning BERT results in dynamically truncated and padded observations that suffice in an end-to-end DL task. However, it doesn't suffice here. For example, an MLP classifier doesn't like to be feed input embeddings (e) with varying sizes (e<sub>{0}</sub>, e<sub>{0 + 1}</sub> ... e<sub>{n - 1}</sub> where max(m) lengths $\epsilon$ {m, m′ ... m′′}). Hence, the ```manipulator``` module is resposuble for handling.... to truncate and pad observations accordingly. in post-contextual feature generation. I encourage you to read the [BERT Paper](https://arxiv.org/pdf/1810.04805.pdf) for an in-depth and technical explanation. 
 
-Furthermore, we want to be able to transform our data primed for ML & DL learning approach. For example, we want to be able to automatically go from input with shape {1000 observations, 128 sequence length & 768 (32x24) dimensional vectors (hidden states)} for a CNN computation to a {1000 observations, 128x768 dimensional vectors} for an SVM computation.
+Furthermore, we provide flexible data transformation capacity primed for ML or DL models. The ```transform``` method given ```{features, learning_approach & divisor}``` arguments are capable of transforming features with shape {1000 observations, 128 sequence length & 768 (32x24) dimensional vectors (hidden states)} for a CNN computation to a {1000 observations, 128x768 dimensional vectors} for an SVM computation.
 
-<!-- Truncate
+Truncate
 ```
 TODO
 ```
@@ -120,4 +120,12 @@ TODO
 Pad
 ```
 TODO
-``` -->
+```
+
+Transform
+```
+TODO
+```
+
+## CADE's Classification Models.
+TODO

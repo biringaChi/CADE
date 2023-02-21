@@ -35,7 +35,7 @@ class Manipulator(ContextualEmbeddings):
 			padded_observations.append(temp)
 		return padded_observations
 
-	def matrix_transform(self, features, divisor: int = 32):
+	def matrix_transform(self, features, learning_apprach = None, divisor: int = 32):
 		transformed = []
 		if self.config.hidden_state % divisor == 0:
 			cols = self.config.hidden_state // divisor
