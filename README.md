@@ -107,9 +107,10 @@ Extracting Features for BCT
 python3 features.py -c={credentials, non_credentials}
 ```
 
-Fine-tuning BERT results in dynamically truncated and padded observations that suffice in an end-to-end DL task. However, it doesn't suffice here. For example, a CNN classifier doesn't like to be feed input embeddings (e) with varying sizes (e<sub>{0}</sub>, e<sub>{0 + 1}</sub> ... e<sub>{n - 1}</sub> where max(m) lengths $\epsilon$ {m, m′ ... m′′}). Hence, in post-contextual feature generation, we use the ```manipulator``` module to truncate and pad observations accordingly. I encourage you to read the [BERT Paper](https://arxiv.org/pdf/1810.04805.pdf) for an in-depth and technical explanation.
-
 ## Manipulator
+Fine-tuning BERT results in dynamically truncated and padded observations that suffice in an end-to-end DL task. However, it doesn't suffice here. For example, an MLP classifier doesn't like to be feed input embeddings (e) with varying sizes (e<sub>{0}</sub>, e<sub>{0 + 1}</sub> ... e<sub>{n - 1}</sub> where max(m) lengths $\epsilon$ {m, m′ ... m′′}). Hence, the ```manipulator``` module is resposuble for handling.... to truncate and pad observations accordingly. in post-contextual feature generation. I encourage you to read the [BERT Paper](https://arxiv.org/pdf/1810.04805.pdf) for an in-depth and technical explanation. 
+
+Furthermore, we want to be able to transform our data primed for ML & DL learning approach. For example, we want to be able to automatically go from input with shape {1000 observations, 128 sequence length & 768 (32x24) dimensional vectors (hidden states)} for a CNN computation to a {1000 observations, 128x768 dimensional vectors} for an SVM computation.
 
 <!-- Truncate
 ```

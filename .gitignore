@@ -145,6 +145,7 @@ predefined_pattern.txt
 auth_key_token.txt
 seed_salt_nonce.txt
 other.txt
+
 neg.txt
 positive.txt
 credentials.txt
@@ -156,5 +157,13 @@ Backdoor Attacks - Prelim.pdf
 prog.pdf
 Vulnerable Apps Summary.pdf
 experiments.ipynb
-CiS-scratch.ipynb
+cade.ipynb
+
 password.pkl
+private_key.pkl
+generic_secret.pkl
+generic_token.pkl
+predefined_pattern.pkl
+auth_key_token.pkl
+seed_salt_nonce.pkl
+other.pkl

@@ -9,7 +9,10 @@ class Manipulator(ContextualEmbeddings):
 	def __init__(self) -> None:
 		super().__init__()
 	
-	def truncate(self, features):
+	def verify_shape(self):
+		pass
+	
+	def truncation(self, features):
 		truncated_observations = []
 		for feature in features:
 			if feature > self.config.max_seqlen:
@@ -18,7 +21,7 @@ class Manipulator(ContextualEmbeddings):
 				truncated_observations.append(feature)
 		return truncated_observations
 
-	def pad(self, features):
+	def padding(self, features):
 		padded_observations  = []
 		for feature in features:
 			if self.utils.__len__(feature) < self.config.max_seqlen:
@@ -31,4 +34,18 @@ class Manipulator(ContextualEmbeddings):
 				else: temp.append(vector)
 			padded_observations.append(temp)
 		return padded_observations
-	
+
+	def matrix_transform(self, features, divisor: int = 32):
+		transformed = []
+		if self.config.hidden_state % divisor == 0:
+			cols = self.config.hidden_state // divisor
+			shape = (divisor, cols)
+			for feature in features:
+				pass
+			TODO
+		else:
+			raise ValueError
+
+	def _pipeline(self):
+		TODO
+		pass
