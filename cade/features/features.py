@@ -2,6 +2,7 @@ import typing
 import pathlib
 import argparse
 import importlib
+from pathlib import Path as p
 from simpletransformers.language_representation import RepresentationModel
 
 parser = argparse.ArgumentParser(description = "Generates Contextual Embedding Features")
@@ -21,7 +22,7 @@ class ContextualEmbeddings:
 	
 	"""
 	def __init__(self) -> None:
-		self.im_mod = importlib.util.spec_from_file_location("primps", pathlib.Path.cwd().parents[0]/"primps.py")
+		self.im_mod = importlib.util.spec_from_file_location("primps", p.cwd().parents[0]/"primps.py")
 		self.utils, self.config, self.logger = self.im_mod.loader.load_module().import_helper_modules()
 		self.navigator, self.location = self.utils.navigator()["credentials"], self.utils.navigator()["dataobjects"]
 	
