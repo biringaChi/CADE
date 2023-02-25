@@ -17,6 +17,7 @@
 	},
 
 	"manipulator" : {
+		"one" : 1,
 		"max_seqlen" : 128,
 		"hidden_state" : 768
 	},

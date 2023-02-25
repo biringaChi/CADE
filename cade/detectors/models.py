@@ -4,29 +4,25 @@ import sklearn
 import transformers
 
 class RF:
-	# TODO
 	def __call__(self):
-		pass
+		return sklearn.ensemble.RandomForestClassifier()
 
 class SVM:
-	# TODO
-	def __call__(self):
-		pass
+	def __call__(self, max_iter):
+		return sklearn.svm.LinearSVC(max_iter = max_iter)
 
 class NB:
-	# TODO
 	def __call__(self):
-		pass
+		return sklearn.naive_bayes.GaussianNB()
 
 class KNN:
-	# TODO
 	def __call__(self):
-		pass
+		return sklearn.neighbors.KNeighborsClassifier()
 
 class LR:
-	# TODO
-	def __call__(self):
-		pass
+	def __call__(self, *lr):
+		solver, max_iter = lr
+		return sklearn.linear_model.LogisticRegression(solver = solver, max_iter = max_iter)
 
 class MLP:
 	# TODO
@@ -49,7 +45,7 @@ class DBN(torch.nn.Module):
 		pass
  
 class CNN(torch.nn.Module):
-	def __init__(self):
+	def __init__(self, *cnn):
 		super(CNN, self).__init__()
 		_, self.ml = ut.config()
 		self.cnn_params = self.ml["dl"]["cnn"]
@@ -79,31 +75,3 @@ class CNN(torch.nn.Module):
 		)
 def forward(self, features):
 	return self.model(features)
-
-
-class Core(torch.nn.Module):
-	def __init__(self, task: str = None) -> None:
-		super(Core, self).__init__()
-		self.task = task
-		_, self.ml = ut.config()
-		self.bert_config, self.default_config = self.ml["dl"]["bert"], self.ml["dl"]["default"]
-		self.sigmoid = torch.nn.Sigmoid()
-		self.dropout = torch.nn.Dropout(self.default_config["dropout"]) 
-		self.BERT = transformers.BertModel.from_pretrained(self.bert_config["model_name"])
-
-		self.binary = self.default_config["target_binary"]
-		self.multivariate = self.default_config["target_multivariate"]
-		self.out_features = self.default_config["out"]
-		
-		self.fully_connected_binary = torch.nn.Linear(self.out_features, self.binary) 
-		self.fully_connected_multivariate = torch.nn.Linear(self.out_features, self.multivariate) 
-
-	def forward(self, input_ids, attention_mask, token_type_ids = None):
-		_, out = self.BERT(input_ids, attention_mask, output_all_encoded_layers = False)
-		out = self.dropout(out)
-
-
-		out = self.fully_connected_binary(out)
-		bout = self.sigmoid(out)
-		mout = self.fully_connected_multivariate(self.out_features, self.multivariate) 
-		return out

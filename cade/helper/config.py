@@ -19,6 +19,7 @@ class Config:
 		self.cat: str = self.metadata["cat"]
 
 		self.manipulator: typing.Dict = self.default["manipulator"]
+		self.one: int = self.manipulator["one"]
 		self.max_seqlen: str = self.manipulator["max_seqlen"]
 		self.hidden_state: str = self.manipulator["hidden_state"]
 

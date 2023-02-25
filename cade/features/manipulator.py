@@ -14,8 +14,23 @@ class Manipulator:
 
 	def truncation(self, features):
 		truncated_features = []
-		if features.shape[1] > self.config.max_seqlen:
+		if features.shape[self.config.one] > self.config.max_seqlen:
 			for feature in features:
 				truncated_features.append(feature[:self.config.max_seqlen])
 			return numpy.asarray(truncated_features)
 		return features
+	
+	def truncation_m(self, *features):
+		return [self.truncation(feature) for feature in features]
+	
+	def padding(self, features):
+		pass
+
+	def padding_m(self, *features):
+		pass
+
+	def transform(self, features):
+		pass
+
+	def _pipeline(self, features):
+		pass
